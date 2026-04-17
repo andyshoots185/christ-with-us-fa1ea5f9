@@ -4,11 +4,15 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
+import CookieConsent from "@/components/CookieConsent";
+import DonationTicker from "@/components/DonationTicker";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
 import Causes from "./pages/Causes.tsx";
+import CauseDetail from "./pages/CauseDetail.tsx";
 import Programs from "./pages/Programs.tsx";
 import Blog from "./pages/Blog.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
 import Contact from "./pages/Contact.tsx";
 import Donate from "./pages/Donate.tsx";
 import Faq from "./pages/Faq.tsx";
@@ -24,8 +28,11 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
         <Route path="/causes" element={<Causes />} />
+        <Route path="/causes/:slug" element={<CauseDetail />} />
         <Route path="/programs" element={<Programs />} />
+        <Route path="/programs/:slug" element={<CauseDetail />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/donate" element={<Donate />} />
         <Route path="/faq" element={<Faq />} />
@@ -44,6 +51,8 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <AnimatedRoutes />
+        <DonationTicker />
+        <CookieConsent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
