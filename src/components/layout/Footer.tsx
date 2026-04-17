@@ -18,6 +18,7 @@ const cols = [
     links: [
       { label: "Programs", to: "/programs" },
       { label: "Blogs", to: "/blog" },
+      { label: "FAQ", to: "/faq" },
       { label: "Privacy policy", to: "#" },
       { label: "Terms and Conditions", to: "#" },
     ],
