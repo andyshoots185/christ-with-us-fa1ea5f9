@@ -11,6 +11,9 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { useState, useEffect } from "react";
 import { causes, partners, faqs, stories } from "@/data/content";
 import Reveal from "@/components/Reveal";
+import Testimonials from "@/components/Testimonials";
+import SponsorAChild from "@/components/SponsorAChild";
+import Accreditations from "@/components/Accreditations";
 
 const formatMoney = (n: number) => `$${n.toLocaleString()}`;
 
@@ -113,6 +116,8 @@ const Index = () => {
         </div>
       </section>
 
+      <Accreditations />
+
       {/* PARTNER MARQUEE */}
       <section className="py-12 bg-background border-y border-border">
         <div className="container mb-6">
@@ -212,11 +217,13 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {causes.slice(0, 3).map((c, idx) => (
               <Reveal key={c.slug} delay={idx * 100} as="article" className="group bg-carbon-elevated rounded-3xl overflow-hidden ring-1 ring-white/5 hover:ring-primary/30 transition-all">
-                <div className="aspect-[4/3] overflow-hidden">
+                <Link to={`/causes/${c.slug}`} className="aspect-[4/3] overflow-hidden block">
                   <img src={c.image} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                </div>
+                </Link>
                 <div className="p-6">
-                  <h3 className="font-bold text-lg leading-snug text-white">{c.title}</h3>
+                  <h3 className="font-bold text-lg leading-snug text-white">
+                    <Link to={`/causes/${c.slug}`} className="hover:text-primary transition-colors">{c.title}</Link>
+                  </h3>
                   <div className="mt-5 flex justify-between text-sm">
                     <div>
                       <div className="text-carbon-muted text-xs">Raised</div>
@@ -229,7 +236,7 @@ const Index = () => {
                   </div>
                   <ProgressBar raised={c.raised} goal={c.goal} className="mt-3" />
                   <Button asChild variant="outline" className="mt-6 rounded-full w-full bg-transparent border-white/15 text-white hover:bg-primary hover:text-primary-foreground hover:border-primary">
-                    <Link to="/causes">Learn More <ArrowRight className="ml-1 h-4 w-4" /></Link>
+                    <Link to={`/causes/${c.slug}`}>Learn More <ArrowRight className="ml-1 h-4 w-4" /></Link>
                   </Button>
                 </div>
               </Reveal>
@@ -293,7 +300,7 @@ const Index = () => {
                   </div>
                   <ProgressBar raised={c.raised} goal={c.goal} className="mt-4" />
                   <Button asChild variant="ghost" className="mt-4 px-0 text-primary hover:text-primary-glow">
-                    <Link to="/programs">Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                    <Link to={`/programs/${c.slug}`}>Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
                   </Button>
                 </article>
               ))}
@@ -321,8 +328,8 @@ const Index = () => {
             setApi={setApi}
             opts={{ align: "start", loop: true, dragFree: false }}
             plugins={[autoplay.current]}
-            onMouseEnter={() => autoplay.current.stop()}
-            onMouseLeave={() => autoplay.current.play()}
+            onMouseEnter={() => { try { autoplay.current?.stop?.(); } catch {} }}
+            onMouseLeave={() => { try { autoplay.current?.play?.(); } catch {} }}
             className="w-full"
           >
             <CarouselContent className="-ml-5">
@@ -384,17 +391,19 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {stories.slice(0, 3).map((s, idx) => (
-              <Reveal key={s.slug} delay={idx * 100} as="article" className="group bg-card rounded-3xl overflow-hidden border border-border shadow-card hover:shadow-elevated transition-all">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-xs">
-                    <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold">{s.category}</span>
-                    <span className="text-muted-foreground">{s.date}</span>
+              <Reveal key={s.slug} delay={idx * 100}>
+                <Link to={`/blog/${s.slug}`} className="group bg-card rounded-3xl overflow-hidden border border-border shadow-card hover:shadow-elevated transition-all block h-full">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
-                  <h3 className="mt-4 font-bold text-lg leading-snug group-hover:text-primary transition-colors">{s.title}</h3>
-                </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 text-xs">
+                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold">{s.category}</span>
+                      <span className="text-muted-foreground">{s.date}</span>
+                    </div>
+                    <h3 className="mt-4 font-bold text-lg leading-snug group-hover:text-primary transition-colors">{s.title}</h3>
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -407,6 +416,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <Testimonials />
+      <SponsorAChild />
 
       {/* STORIES BRINGING HOPE — large video card */}
       <section className="py-24 bg-secondary/40">

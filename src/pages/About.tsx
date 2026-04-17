@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/PageHero";
 import CountUp from "@/components/CountUp";
+import Reveal from "@/components/Reveal";
+import Testimonials from "@/components/Testimonials";
+import Accreditations from "@/components/Accreditations";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HeartHandshake } from "lucide-react";
 import { partners } from "@/data/content";
@@ -58,34 +61,36 @@ const About = () => (
     <section className="py-20 bg-background">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-10 items-end mb-12">
-          <p className="text-muted-foreground max-w-md">
+          <Reveal as="p" className="text-muted-foreground max-w-md">
             A purpose-driven nonprofit organization working to create lasting change in communities.
-          </p>
+          </Reveal>
           <div className="grid grid-cols-2 gap-8">
             {[
               { value: 11000, suffix: "+", label: "Lives Impacted" },
               { value: 240, suffix: "+", label: "Active Volunteers" },
               { value: 1200, suffix: "+", label: "Meals Delivered" },
               { value: 62, suffix: "+", label: "Active Projects" },
-            ].map((s) => (
-              <div key={s.label}>
+            ].map((s, idx) => (
+              <Reveal key={s.label} delay={idx * 80}>
                 <div className="text-3xl md:text-4xl font-bold">
                   <CountUp end={s.value} suffix={s.suffix} />
                 </div>
                 <div className="text-sm text-muted-foreground mt-1">{s.label}</div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
-        <div className="rounded-3xl overflow-hidden aspect-[21/9] shadow-elevated">
+        <Reveal className="rounded-3xl overflow-hidden aspect-[21/9] shadow-elevated">
           <img
             src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80"
             alt="Children smiling in community"
             className="w-full h-full object-cover"
           />
-        </div>
+        </Reveal>
       </div>
     </section>
+
+    <Accreditations />
 
     {/* PARTNER MARQUEE */}
     <section className="py-12 bg-background border-y border-border">
@@ -103,14 +108,14 @@ const About = () => (
     {/* TOGETHER FOR LASTING HOPE */}
     <section className="py-24 bg-background">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <h2 className="text-3xl md:text-5xl font-bold leading-tight max-w-2xl">
             Together for Lasting Hope and Humanity
           </h2>
           <p className="text-muted-foreground max-w-sm">
             Born in Kampala in 2014, we've grown into a global family of donors, volunteers and dreamers serving Uganda with love.
           </p>
-        </div>
+        </Reveal>
         <div className="rounded-3xl overflow-hidden aspect-[21/9] shadow-elevated">
           <img
             src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=2000&q=80"
@@ -121,10 +126,12 @@ const About = () => (
       </div>
     </section>
 
+    <Testimonials />
+
     {/* OPPORTUNITY & EQUALITY */}
     <section className="py-24 bg-secondary/40">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <span className="text-primary text-xs font-bold tracking-widest uppercase">● Our Mission</span>
             <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight max-w-xl">
@@ -134,7 +141,7 @@ const About = () => (
           <p className="text-muted-foreground max-w-sm">
             We believe every child deserves the chance to learn, grow and thrive — regardless of where they were born.
           </p>
-        </div>
+        </Reveal>
         <div className="rounded-3xl overflow-hidden aspect-[21/9] shadow-elevated">
           <img
             src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=80"
@@ -148,7 +155,7 @@ const About = () => (
     {/* OUR LEGACY IN MOTION — team grid */}
     <section className="py-24 bg-background">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="text-primary text-xs font-bold tracking-widest uppercase">● Our Team</span>
             <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight max-w-xl">
@@ -158,18 +165,18 @@ const About = () => (
           <p className="text-muted-foreground max-w-sm">
             The hands, hearts and minds keeping our mission alive across Uganda and beyond.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid lg:grid-cols-3 gap-5">
-          {team.map((m) => (
-            <article key={m.name} className={`group relative rounded-3xl overflow-hidden ${m.span}`}>
+          {team.map((m, idx) => (
+            <Reveal key={m.name} delay={idx * 80} as="article" className={`group relative rounded-3xl overflow-hidden ${m.span}`}>
               <img src={m.image} alt={m.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 via-carbon/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <h3 className="text-white font-bold text-lg">{m.name}</h3>
                 <p className="text-carbon-muted text-sm">{m.role}</p>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
