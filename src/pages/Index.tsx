@@ -10,6 +10,7 @@ import CountUp from "@/components/CountUp";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { causes, partners, faqs, stories } from "@/data/content";
+import Reveal from "@/components/Reveal";
 
 const formatMoney = (n: number) => `$${n.toLocaleString()}`;
 
@@ -90,7 +91,7 @@ const Index = () => {
       {/* INTRO STRIP */}
       <section className="bg-secondary/40 py-16">
         <div className="container grid lg:grid-cols-2 gap-10 items-center">
-          <div>
+          <Reveal>
             <span className="text-primary text-xs font-bold tracking-widest uppercase">● About Us</span>
             <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight">
               United Together to Create Enduring Hope
@@ -101,14 +102,14 @@ const Index = () => {
             <Button asChild variant="ghost" className="mt-6 text-primary hover:text-primary-glow px-0">
               <Link to="/about">Learn more <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
-          </div>
-          <div className="rounded-3xl overflow-hidden shadow-elevated aspect-[16/10]">
+          </Reveal>
+          <Reveal delay={120} className="rounded-3xl overflow-hidden shadow-elevated aspect-[16/10]">
             <img
               src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1400&q=80"
               alt="Community workers gathering with children in Uganda"
               className="w-full h-full object-cover"
             />
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -131,7 +132,7 @@ const Index = () => {
       {/* IMPACT STATS */}
       <section className="carbon py-24">
         <div className="container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
               <span className="text-primary text-xs font-bold tracking-widest uppercase">● Impact</span>
               <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 max-w-xl leading-tight">
@@ -141,7 +142,7 @@ const Index = () => {
             <p className="text-carbon-muted max-w-sm">
               Every number represents a life touched, a family fed, a child learning. Real change, transparently reported.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-3 gap-5">
             {[
@@ -166,9 +167,10 @@ const Index = () => {
                 icon: Globe2,
                 image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1200&q=80",
               },
-            ].map((s) => (
-              <div
+            ].map((s, idx) => (
+              <Reveal
                 key={s.label}
+                delay={idx * 120}
                 className="relative rounded-3xl p-8 ring-1 ring-white/5 hover:ring-primary/40 transition-all group overflow-hidden min-h-[240px]"
               >
                 <img
@@ -186,7 +188,7 @@ const Index = () => {
                   </div>
                   <div className="mt-3 text-carbon-muted">{s.label}</div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -195,7 +197,7 @@ const Index = () => {
       {/* CAUSES PREVIEW */}
       <section className="py-24 carbon">
         <div className="container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
               <span className="text-primary text-xs font-bold tracking-widest uppercase">● Causes</span>
               <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight max-w-xl text-white">
@@ -205,11 +207,11 @@ const Index = () => {
             <Button asChild variant="ghost" className="text-primary hover:text-primary-glow self-start md:self-auto">
               <Link to="/causes">View all causes <ChevronRight className="ml-1 h-4 w-4" /></Link>
             </Button>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {causes.slice(0, 3).map((c) => (
-              <article key={c.slug} className="group bg-carbon-elevated rounded-3xl overflow-hidden ring-1 ring-white/5 hover:ring-primary/30 transition-all">
+            {causes.slice(0, 3).map((c, idx) => (
+              <Reveal key={c.slug} delay={idx * 100} as="article" className="group bg-carbon-elevated rounded-3xl overflow-hidden ring-1 ring-white/5 hover:ring-primary/30 transition-all">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img src={c.image} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
@@ -230,7 +232,7 @@ const Index = () => {
                     <Link to="/causes">Learn More <ArrowRight className="ml-1 h-4 w-4" /></Link>
                   </Button>
                 </div>
-              </article>
+              </Reveal>
             ))}
           </div>
 
@@ -381,8 +383,8 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {stories.slice(0, 3).map((s) => (
-              <article key={s.slug} className="group bg-card rounded-3xl overflow-hidden border border-border shadow-card hover:shadow-elevated transition-all">
+            {stories.slice(0, 3).map((s, idx) => (
+              <Reveal key={s.slug} delay={idx * 100} as="article" className="group bg-card rounded-3xl overflow-hidden border border-border shadow-card hover:shadow-elevated transition-all">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
@@ -393,7 +395,7 @@ const Index = () => {
                   </div>
                   <h3 className="mt-4 font-bold text-lg leading-snug group-hover:text-primary transition-colors">{s.title}</h3>
                 </div>
-              </article>
+              </Reveal>
             ))}
           </div>
 
