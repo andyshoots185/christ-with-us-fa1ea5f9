@@ -1,0 +1,49 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import Layout from "@/components/layout/Layout";
+import PageHero from "@/components/PageHero";
+import ProgressBar from "@/components/ProgressBar";
+import { Button } from "@/components/ui/button";
+import { causes } from "@/data/content";
+
+const formatMoney = (n: number) => `$${n.toLocaleString()}`;
+
+const Causes = () => (
+  <Layout>
+    <PageHero
+      tag="Causes"
+      title="Support What Matters Most"
+      subtitle="We address urgent community needs through health, education, livelihoods and disaster relief."
+    />
+    <section className="py-20 bg-secondary/40">
+      <div className="container grid md:grid-cols-2 gap-6">
+        {causes.map((c) => (
+          <article key={c.slug} className="group bg-card rounded-3xl overflow-hidden shadow-card hover:shadow-elevated transition-all border border-border">
+            <div className="aspect-[16/10] overflow-hidden">
+              <img src={c.image} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div className="p-7">
+              <h3 className="font-bold text-xl leading-snug">{c.title}</h3>
+              <div className="mt-5 flex justify-between text-sm">
+                <div>
+                  <div className="text-muted-foreground text-xs">Raised Amount</div>
+                  <div className="font-bold text-base">{formatMoney(c.raised)}</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-muted-foreground text-xs">Goal Amount</div>
+                  <div className="font-bold text-base">{formatMoney(c.goal)}</div>
+                </div>
+              </div>
+              <ProgressBar raised={c.raised} goal={c.goal} className="mt-3" />
+              <Button asChild variant="outline" className="mt-6 rounded-full w-full border-foreground/15 hover:bg-primary hover:text-primary-foreground hover:border-primary">
+                <Link to="/donate">Learn More <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              </Button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </Layout>
+);
+
+export default Causes;
