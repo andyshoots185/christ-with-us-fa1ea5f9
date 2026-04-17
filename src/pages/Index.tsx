@@ -11,6 +11,9 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { useState, useEffect } from "react";
 import { causes, partners, faqs, stories } from "@/data/content";
 import Reveal from "@/components/Reveal";
+import Testimonials from "@/components/Testimonials";
+import SponsorAChild from "@/components/SponsorAChild";
+import Accreditations from "@/components/Accreditations";
 
 const formatMoney = (n: number) => `$${n.toLocaleString()}`;
 
