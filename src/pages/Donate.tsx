@@ -27,6 +27,7 @@ const Donate = () => {
         tag="Donate"
         title="Your Gift Becomes Hope"
         subtitle="100% of your donation reaches the field. Choose an amount and join thousands of changemakers."
+        image="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80"
       />
       <section className="py-20 bg-secondary/40">
         <div className="container max-w-2xl">

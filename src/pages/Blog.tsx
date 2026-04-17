@@ -8,6 +8,7 @@ const Blog = () => (
       tag="Blog"
       title="Latest Stories That Inspire Hope"
       subtitle="Explore meaningful updates, community highlights and real stories from the ground."
+      image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80"
     />
     <section className="py-20 bg-secondary/40">
       <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-6">

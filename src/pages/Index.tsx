@@ -6,6 +6,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import ProgressBar from "@/components/ProgressBar";
+import CountUp from "@/components/CountUp";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { causes, partners, faqs, stories } from "@/data/content";
@@ -144,17 +145,47 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { num: "1,000+", label: "Lives Impacted", icon: HeartHandshake },
-              { num: "300+", label: "Meals Delivered Weekly", icon: Users },
-              { num: "266+", label: "Volunteers Worldwide", icon: Globe2 },
+              {
+                value: 1000,
+                suffix: "+",
+                label: "Lives Impacted",
+                icon: HeartHandshake,
+                image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
+              },
+              {
+                value: 300,
+                suffix: "+",
+                label: "Meals Delivered Weekly",
+                icon: Users,
+                image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1200&q=80",
+              },
+              {
+                value: 266,
+                suffix: "+",
+                label: "Volunteers Worldwide",
+                icon: Globe2,
+                image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1200&q=80",
+              },
             ].map((s) => (
-              <div key={s.label} className="bg-carbon-elevated rounded-3xl p-8 ring-1 ring-white/5 hover:ring-primary/40 transition-all group relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <div className="absolute -right-10 -top-10 w-48 h-48 rounded-full bg-primary blur-3xl" />
+              <div
+                key={s.label}
+                className="relative rounded-3xl p-8 ring-1 ring-white/5 hover:ring-primary/40 transition-all group overflow-hidden min-h-[240px]"
+              >
+                <img
+                  src={s.image}
+                  alt=""
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-carbon-elevated/90 via-carbon-elevated/80 to-carbon/90" />
+                <div className="absolute -right-10 -top-10 w-48 h-48 rounded-full bg-primary/30 blur-3xl opacity-0 group-hover:opacity-60 transition-opacity" />
+                <div className="relative">
+                  <s.icon className="h-9 w-9 text-primary mb-6" />
+                  <div className="text-5xl md:text-6xl font-bold text-white tracking-tight">
+                    <CountUp end={s.value} suffix={s.suffix} />
+                  </div>
+                  <div className="mt-3 text-carbon-muted">{s.label}</div>
                 </div>
-                <s.icon className="h-9 w-9 text-primary mb-6 relative" />
-                <div className="text-5xl md:text-6xl font-bold text-white tracking-tight relative">{s.num}</div>
-                <div className="mt-3 text-carbon-muted relative">{s.label}</div>
               </div>
             ))}
           </div>
@@ -467,7 +498,9 @@ const Index = () => {
               </p>
             </div>
             <div>
-              <div className="text-5xl md:text-6xl font-black text-gradient-green leading-none">$1,660,000+</div>
+              <div className="text-5xl md:text-6xl font-black text-gradient-green leading-none">
+                <CountUp end={1660000} prefix="$" suffix="+" />
+              </div>
               <p className="text-carbon-muted mt-2">Raised globally this year</p>
               <Button asChild className="mt-6 rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-8 h-12 shadow-glow w-full md:w-auto">
                 <Link to="/donate">Donate Now <ArrowRight className="ml-1 h-4 w-4" /></Link>

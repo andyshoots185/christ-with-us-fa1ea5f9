@@ -51,6 +51,7 @@ const Contact = () => {
         tag="Contact"
         title="Reach Out. We're Here Always."
         subtitle="Have questions, ideas, or need support? Connect with us — we're ready to listen and help."
+        image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80"
       />
 
       <section className="py-20 bg-secondary/40">

@@ -5,11 +5,31 @@ interface PageHeroProps {
   title: string;
   subtitle: string;
   className?: string;
+  /** Background image URL for the hero */
+  image?: string;
 }
 
-const PageHero = ({ tag, title, subtitle, className }: PageHeroProps) => (
-  <section className={cn("carbon hero-bg pt-36 pb-20", className)}>
-    <div className="container">
+const PageHero = ({ tag, title, subtitle, className, image }: PageHeroProps) => (
+  <section className={cn("relative carbon hero-bg pt-36 pb-20 overflow-hidden", className)}>
+    {image && (
+      <>
+        <div
+          className="absolute inset-0 opacity-30 mix-blend-luminosity"
+          style={{
+            backgroundImage: `url('${image}')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "var(--gradient-fade-bottom)" }}
+          aria-hidden="true"
+        />
+      </>
+    )}
+    <div className="container relative z-10">
       <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/15 text-primary text-xs font-semibold mb-6 ring-1 ring-primary/30">
         {tag}
       </span>
