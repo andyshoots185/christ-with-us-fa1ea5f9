@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Play, ChevronLeft } from "lucide-react";
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Play } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import ProgressBar from "@/components/ProgressBar";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
 import { causes, partners, faqs, stories } from "@/data/content";
 
 const formatMoney = (n: number) => `$${n.toLocaleString()}`;
@@ -32,6 +36,18 @@ const transformCards = [
 ];
 
 const Index = () => {
+  const autoplay = useRef(Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true }));
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
+
   return (
     <Layout>
       {/* HERO */}
@@ -268,34 +284,53 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {transformCards.map((t) => (
-              <article key={t.title} className="group rounded-3xl overflow-hidden carbon ring-1 ring-white/5 hover:ring-primary/40 transition-all">
-                <div className="aspect-[4/5] relative overflow-hidden">
-                  <img src={t.image} alt={t.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/50 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg leading-tight">{t.title}</h3>
-                    <p className="text-carbon-muted text-sm mt-2 line-clamp-2">{t.desc}</p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <Carousel
+            setApi={setApi}
+            opts={{ align: "start", loop: true, dragFree: false }}
+            plugins={[autoplay.current]}
+            onMouseEnter={() => autoplay.current.stop()}
+            onMouseLeave={() => autoplay.current.play()}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-5">
+              {transformCards.map((t) => (
+                <CarouselItem key={t.title} className="pl-5 basis-full sm:basis-1/2 lg:basis-1/4">
+                  <article className="group rounded-3xl overflow-hidden carbon ring-1 ring-white/5 hover:ring-primary/40 transition-all h-full">
+                    <div className="aspect-[4/5] relative overflow-hidden">
+                      <img src={t.image} alt={t.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/50 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 className="text-white font-bold text-lg leading-tight">{t.title}</h3>
+                        <p className="text-carbon-muted text-sm mt-2 line-clamp-2">{t.desc}</p>
+                      </div>
+                    </div>
+                  </article>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
 
-          <div className="mt-8 flex items-center justify-between">
-            <div className="flex gap-2">
-              <button aria-label="Previous" className="h-11 w-11 rounded-full bg-card border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button aria-label="Next" className="h-11 w-11 rounded-full bg-card border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                <ChevronRight className="h-4 w-4" />
-              </button>
+            <div className="mt-8 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="flex gap-2 relative">
+                  <CarouselPrevious className="static translate-y-0 h-11 w-11 bg-card border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary" />
+                  <CarouselNext className="static translate-y-0 h-11 w-11 bg-card border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary" />
+                </div>
+                <div className="flex gap-1.5">
+                  {Array.from({ length: count }).map((_, i) => (
+                    <button
+                      key={i}
+                      aria-label={`Go to slide ${i + 1}`}
+                      onClick={() => api?.scrollTo(i)}
+                      className={`h-1.5 rounded-full transition-all ${i === current ? "w-6 bg-primary" : "w-1.5 bg-border"}`}
+                    />
+                  ))}
+                </div>
+              </div>
+              <Button asChild className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground">
+                <Link to="/programs">Join the Movement <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              </Button>
             </div>
-            <Button asChild className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground">
-              <Link to="/programs">Join the Movement <ArrowRight className="ml-1 h-4 w-4" /></Link>
-            </Button>
-          </div>
+          </Carousel>
         </div>
       </section>
 
