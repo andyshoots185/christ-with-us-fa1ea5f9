@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/PageHero";
+import CountUp from "@/components/CountUp";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HeartHandshake } from "lucide-react";
 import { partners } from "@/data/content";
@@ -50,6 +51,7 @@ const About = () => (
       tag="About"
       title="Driven By Purpose And Impact"
       subtitle="A purpose-driven nonprofit organization working to create lasting change in communities across Uganda."
+      image="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=2000&q=80"
     />
 
     {/* STATS + FEATURED IMAGE */}
@@ -61,13 +63,15 @@ const About = () => (
           </p>
           <div className="grid grid-cols-2 gap-8">
             {[
-              { num: "11,000+", label: "Lives Impacted" },
-              { num: "240+", label: "Active Volunteers" },
-              { num: "1,200+", label: "Meals Delivered" },
-              { num: "62+", label: "Active Projects" },
+              { value: 11000, suffix: "+", label: "Lives Impacted" },
+              { value: 240, suffix: "+", label: "Active Volunteers" },
+              { value: 1200, suffix: "+", label: "Meals Delivered" },
+              { value: 62, suffix: "+", label: "Active Projects" },
             ].map((s) => (
               <div key={s.label}>
-                <div className="text-3xl md:text-4xl font-bold">{s.num}</div>
+                <div className="text-3xl md:text-4xl font-bold">
+                  <CountUp end={s.value} suffix={s.suffix} />
+                </div>
                 <div className="text-sm text-muted-foreground mt-1">{s.label}</div>
               </div>
             ))}
@@ -205,7 +209,9 @@ const About = () => (
               </p>
             </div>
             <div>
-              <div className="text-5xl md:text-6xl font-black text-gradient-green leading-none">$1,660,000+</div>
+              <div className="text-5xl md:text-6xl font-black text-gradient-green leading-none">
+                <CountUp end={1660000} prefix="$" suffix="+" />
+              </div>
               <p className="text-carbon-muted mt-2">Raised globally this year</p>
               <Button asChild className="mt-6 rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-8 h-12 shadow-glow w-full md:w-auto">
                 <Link to="/donate">Donate Now <ArrowRight className="ml-1 h-4 w-4" /></Link>

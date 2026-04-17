@@ -14,6 +14,7 @@ const Programs = () => (
       tag="Programs"
       title="Programs That Make a Difference"
       subtitle="Programs that uplift communities through education, healthcare and live support."
+      image="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=2000&q=80"
     />
     <section className="py-20 bg-secondary/40">
       <div className="container space-y-6">
