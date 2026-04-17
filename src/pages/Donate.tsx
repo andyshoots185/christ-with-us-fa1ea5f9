@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import SponsorAChild from "@/components/SponsorAChild";
+import Accreditations from "@/components/Accreditations";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Heart } from "lucide-react";
@@ -31,7 +34,7 @@ const Donate = () => {
       />
       <section className="py-20 bg-secondary/40">
         <div className="container max-w-2xl">
-          <div className="bg-card rounded-3xl p-8 md:p-10 shadow-elevated border border-border">
+          <Reveal className="bg-card rounded-3xl p-8 md:p-10 shadow-elevated border border-border">
             <Heart className="h-10 w-10 text-primary fill-primary mb-4" />
             <h2 className="text-2xl md:text-3xl font-bold">Make a one-time donation</h2>
             <p className="text-muted-foreground mt-2">Every contribution, large or small, multiplies on the ground.</p>
@@ -66,9 +69,12 @@ const Donate = () => {
             <Button onClick={handleDonate} className="mt-6 w-full rounded-full bg-primary hover:bg-primary-glow text-primary-foreground h-13 py-3 font-semibold shadow-glow">
               Donate Now
             </Button>
-          </div>
+          </Reveal>
         </div>
       </section>
+
+      <SponsorAChild />
+      <Accreditations />
     </Layout>
   );
 };

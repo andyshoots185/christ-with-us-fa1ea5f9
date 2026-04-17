@@ -3,6 +3,7 @@ import { z } from "zod";
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -65,8 +66,8 @@ const Contact = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-6 mb-10">
-            {infoItems.map((it) => (
-              <div key={it.label} className="bg-card rounded-2xl p-5 flex items-center gap-5 shadow-card border border-border">
+            {infoItems.map((it, idx) => (
+              <Reveal key={it.label} delay={idx * 100} className="bg-card rounded-2xl p-5 flex items-center gap-5 shadow-card border border-border">
                 <div className="h-12 w-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                   <it.icon className="h-5 w-5" />
                 </div>
@@ -74,11 +75,11 @@ const Contact = () => {
                   <div className="font-bold">{it.label}</div>
                   <div className="text-muted-foreground text-sm">{it.value}</div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
 
-          <div className="bg-card rounded-3xl p-8 md:p-10 shadow-card border border-border">
+          <Reveal className="bg-card rounded-3xl p-8 md:p-10 shadow-card border border-border">
             <h2 className="text-primary font-bold mb-6">Contact Information</h2>
             <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-5">
               <div className="space-y-2">
@@ -107,13 +108,13 @@ const Contact = () => {
                 </Button>
               </div>
             </form>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="py-20 bg-background">
         <div className="container grid lg:grid-cols-[1fr_1.4fr] gap-12">
-          <div>
+          <Reveal>
             <span className="text-primary text-xs font-bold tracking-widest uppercase">● FAQ</span>
             <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight">
               What You're Thinking,<br/>We've Answered.
@@ -121,7 +122,7 @@ const Contact = () => {
             <p className="mt-5 text-muted-foreground max-w-md">
               Find helpful answers to common questions about donating, volunteering and fundraising.
             </p>
-          </div>
+          </Reveal>
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((f, i) => (
               <AccordionItem key={i} value={`f-${i}`} className="bg-secondary/60 rounded-2xl px-6 border-none">
