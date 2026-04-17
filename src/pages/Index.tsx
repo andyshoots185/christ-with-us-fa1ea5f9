@@ -116,6 +116,8 @@ const Index = () => {
         </div>
       </section>
 
+      <Accreditations />
+
       {/* PARTNER MARQUEE */}
       <section className="py-12 bg-background border-y border-border">
         <div className="container mb-6">
@@ -414,6 +416,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <Testimonials />
+      <SponsorAChild />
 
       {/* STORIES BRINGING HOPE — large video card */}
       <section className="py-24 bg-secondary/40">
