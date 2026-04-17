@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Heart } from "lucide-react";
+import { useState } from "react";
+import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
+
+const emailSchema = z.string().trim().email("Enter a valid email").max(255);
 
 const cols = [
   {
@@ -37,6 +42,22 @@ const cols = [
 const words = ["Hope", "Unity", "Care", "Impact", "Growth", "Trust", "Together"];
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = emailSchema.safeParse(email);
+    if (!result.success) {
+      toast({ title: "Invalid email", description: result.error.errors[0].message, variant: "destructive" });
+      return;
+    }
+    const list = JSON.parse(localStorage.getItem("cwu_newsletter") || "[]");
+    if (!list.includes(result.data)) list.push(result.data);
+    localStorage.setItem("cwu_newsletter", JSON.stringify(list));
+    toast({ title: "You're in 💚", description: "Welcome to the family — look out for our next update." });
+    setEmail("");
+  };
+
   return (
     <footer className="carbon relative overflow-hidden">
       <div className="container py-20">
@@ -52,9 +73,12 @@ const Footer = () => {
             <div className="mt-8">
               <h4 className="text-white font-semibold mb-2">Newsletter</h4>
               <p className="text-carbon-muted text-sm mb-3">Sign up to never miss an update.</p>
-              <form className="relative max-w-sm" onSubmit={(e) => e.preventDefault()}>
+              <form className="relative max-w-sm" onSubmit={handleSubscribe}>
                 <Input
                   type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@email.com"
                   className="rounded-full bg-carbon-elevated border-white/10 text-white placeholder:text-carbon-muted h-12 pl-5 pr-14"
                 />
