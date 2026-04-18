@@ -8,6 +8,7 @@ import Accreditations from "@/components/Accreditations";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HeartHandshake } from "lucide-react";
 import { partners } from "@/data/content";
+import { photos } from "@/data/images";
 
 const team = [
   {
@@ -54,7 +55,7 @@ const About = () => (
       tag="About"
       title="Driven By Purpose And Impact"
       subtitle="A purpose-driven nonprofit organization working to create lasting change in communities across Uganda."
-      image="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=2000&q=80"
+      image={photos.together}
     />
 
     {/* STATS + FEATURED IMAGE */}
@@ -82,7 +83,7 @@ const About = () => (
         </div>
         <Reveal className="rounded-3xl overflow-hidden aspect-[21/9] shadow-elevated">
           <img
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80"
+            src={photos.happy}
             alt="Children smiling in community"
             className="w-full h-full object-cover"
           />
@@ -118,7 +119,7 @@ const About = () => (
         </Reveal>
         <div className="rounded-3xl overflow-hidden aspect-[21/9] shadow-elevated">
           <img
-            src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=2000&q=80"
+            src={photos.together}
             alt="Community gathering"
             className="w-full h-full object-cover"
           />
@@ -144,7 +145,7 @@ const About = () => (
         </Reveal>
         <div className="rounded-3xl overflow-hidden aspect-[21/9] shadow-elevated">
           <img
-            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=80"
+            src={photos.education}
             alt="Children in school uniforms"
             className="w-full h-full object-cover"
           />
@@ -187,7 +188,7 @@ const About = () => (
       <div className="container">
         <div className="rounded-3xl overflow-hidden relative aspect-[21/10] mb-5">
           <img
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80"
+            src={photos.smile}
             alt="Children at sunset"
             className="w-full h-full object-cover"
           />
@@ -201,7 +202,7 @@ const About = () => (
         <div className="grid md:grid-cols-2 gap-5">
           <div className="rounded-3xl overflow-hidden aspect-[5/4] md:aspect-auto md:min-h-[320px]">
             <img
-              src="https://images.unsplash.com/photo-1518398046578-8cca57782e17?auto=format&fit=crop&w=1400&q=80"
+              src={photos.eeee}
               alt="Hands holding heart"
               className="w-full h-full object-cover"
             />

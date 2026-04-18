@@ -5,6 +5,7 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { causes } from "@/data/content";
+import { photos } from "@/data/images";
 
 const formatMoney = (n: number) => `$${n.toLocaleString()}`;
 
@@ -14,7 +15,7 @@ const Causes = () => (
       tag="Causes"
       title="Support What Matters Most"
       subtitle="We address urgent community needs through health, education, livelihoods and disaster relief."
-      image="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=2000&q=80"
+      image={photos.happy}
     />
     <section className="py-20 bg-secondary/40">
       <div className="container grid md:grid-cols-2 gap-7">
