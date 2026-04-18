@@ -51,12 +51,34 @@ const Index = () => {
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
+  // Scroll-driven program image (rotates as user scrolls past the section)
+  const programImgRef = useRef<HTMLDivElement | null>(null);
+  const [programIdx, setProgramIdx] = useState(0);
+
   useEffect(() => {
     if (!api) return;
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap());
     api.on("select", () => setCurrent(api.selectedScrollSnap()));
   }, [api]);
+
+  useEffect(() => {
+    const el = programImgRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      // progress = 0 when section first enters bottom of viewport, 1 when it leaves the top
+      const total = rect.height + vh;
+      const progress = Math.max(0, Math.min(1, (vh - rect.top) / total));
+      const idx = Math.min(programGallery.length - 1, Math.floor(progress * programGallery.length));
+      setProgramIdx(idx);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
 
   return (
     <Layout>
