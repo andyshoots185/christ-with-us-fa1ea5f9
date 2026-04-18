@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, HelpCircle, ShieldCheck, HeartHandshake, Users, Sparkles, ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/PageHero";
+import { photos } from "@/data/images";
 import Reveal from "@/components/Reveal";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -119,7 +120,7 @@ const Faq = () => {
         tag="● Help Center"
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about our mission, your impact, and how we keep your trust."
-        image="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2000&q=80"
+        image={photos.school}
       />
 
       {/* SEARCH + FILTER */}
