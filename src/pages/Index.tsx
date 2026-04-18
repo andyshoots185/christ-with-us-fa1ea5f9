@@ -479,13 +479,13 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-elevated aspect-[21/10] group cursor-pointer">
+          <div className="relative rounded-3xl overflow-hidden shadow-elevated aspect-[21/10] group">
             <img
-              src="https://images.unsplash.com/photo-1511949860663-92c5c57d48a7?auto=format&fit=crop&w=2000&q=80"
-              alt="Children playing music in a field"
+              src={photos.eeee}
+              alt="A child watching attentively in class"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 via-carbon/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/30 to-transparent" />
 
             <div className="absolute inset-0 flex items-center justify-center">
               <button aria-label="Play video" className="h-20 w-20 md:h-24 md:w-24 rounded-full bg-primary flex items-center justify-center shadow-glow hover:scale-110 transition-transform">
@@ -493,9 +493,28 @@ const Index = () => {
               </button>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <div className="max-w-md bg-carbon/60 backdrop-blur-md rounded-2xl p-5 ring-1 ring-white/10">
-                <h3 className="text-white font-bold text-xl leading-tight">
+            {/* Thumbnails — bottom-left, click to open in lightbox */}
+            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex gap-2 z-10">
+              {featuredThumbs.map((src, i) => (
+                <Dialog key={i}>
+                  <DialogTrigger asChild>
+                    <button
+                      aria-label={`Open photo ${i + 1}`}
+                      className="h-14 w-14 md:h-20 md:w-20 rounded-xl overflow-hidden ring-2 ring-white/70 hover:ring-primary hover:scale-105 transition-all shadow-elevated"
+                    >
+                      <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none shadow-none">
+                    <img src={src} alt="" className="w-full h-auto rounded-2xl" />
+                  </DialogContent>
+                </Dialog>
+              ))}
+            </div>
+
+            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 max-w-md">
+              <div className="bg-carbon/70 backdrop-blur-md rounded-2xl p-5 ring-1 ring-white/10">
+                <h3 className="text-white font-bold text-lg md:text-xl leading-tight">
                   Bringing Hope: How a Single Day of Giving Changed Lives Forever
                 </h3>
                 <p className="text-carbon-muted text-sm mt-2">
@@ -535,7 +554,7 @@ const Index = () => {
         <div className="container grid md:grid-cols-2 gap-5">
           <div className="rounded-3xl overflow-hidden aspect-[5/4] md:aspect-auto md:min-h-[360px] relative">
             <img
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1400&q=80"
+              src={photos.smile}
               alt="Children at sunset"
               className="w-full h-full object-cover"
             />
