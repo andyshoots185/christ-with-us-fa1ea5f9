@@ -183,21 +183,21 @@ const Index = () => {
                 suffix: "+",
                 label: "Lives Impacted",
                 icon: HeartHandshake,
-                image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
+                image: photos.happy,
               },
               {
                 value: 300,
                 suffix: "+",
                 label: "Meals Delivered Weekly",
                 icon: Users,
-                image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1200&q=80",
+                image: photos.together,
               },
               {
                 value: 266,
                 suffix: "+",
                 label: "Volunteers Worldwide",
                 icon: Globe2,
-                image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1200&q=80",
+                image: photos.smile,
               },
             ].map((s, idx) => (
               <Reveal
