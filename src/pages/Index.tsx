@@ -295,12 +295,29 @@ const Index = () => {
           </div>
 
           <div className="grid lg:grid-cols-[0.9fr_1.3fr] gap-8 items-start">
-            <div className="rounded-3xl overflow-hidden shadow-elevated aspect-[4/5]">
-              <img
-                src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1000&q=80"
-                alt="Children in a community program"
-                className="w-full h-full object-cover"
-              />
+            <div ref={programImgRef} className="relative rounded-3xl overflow-hidden shadow-elevated aspect-[4/5] lg:sticky lg:top-28">
+              {programGallery.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt="Children in our community programs"
+                  loading="lazy"
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                    i === programIdx ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+              {/* Indicator dots */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                {programGallery.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all ${
+                      i === programIdx ? "w-6 bg-white" : "w-1.5 bg-white/40"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="space-y-4">
