@@ -5,11 +5,13 @@ import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Play
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import ProgressBar from "@/components/ProgressBar";
 import CountUp from "@/components/CountUp";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { causes, partners, faqs, stories } from "@/data/content";
+import { photos, programGallery } from "@/data/images";
 import Reveal from "@/components/Reveal";
 import Testimonials from "@/components/Testimonials";
 import SponsorAChild from "@/components/SponsorAChild";
@@ -21,30 +23,37 @@ const transformCards = [
   {
     title: "Aid Bringing Care",
     desc: "An ongoing initiative to bring relief, comfort and dignity to families in distress.",
-    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80",
+    image: photos.together,
   },
   {
     title: "A Strength to Stand",
     desc: "Programs that rebuild lives through mentorship, skills and emotional support.",
-    image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=900&q=80",
+    image: photos.education,
   },
   {
     title: "Power Meaningful Change",
     desc: "Funded by your love — turning intention into measurable impact every single day.",
-    image: "https://images.unsplash.com/photo-1518398046578-8cca57782e17?auto=format&fit=crop&w=900&q=80",
+    image: photos.smile,
   },
   {
     title: "Hope in Every Hand",
     desc: "Volunteers across borders showing up where help is needed the most.",
-    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80",
+    image: photos.eeee,
   },
 ];
+
+// Thumbnails shown on the "Be the Reason" CTA — click to open lightbox.
+const featuredThumbs = [photos.school, photos.edu, photos.rdue];
 
 const Index = () => {
   const autoplay = useRef(Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true }));
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+
+  // Scroll-driven program image (rotates as user scrolls past the section)
+  const programImgRef = useRef<HTMLDivElement | null>(null);
+  const [programIdx, setProgramIdx] = useState(0);
 
   useEffect(() => {
     if (!api) return;
@@ -53,6 +62,24 @@ const Index = () => {
     api.on("select", () => setCurrent(api.selectedScrollSnap()));
   }, [api]);
 
+  useEffect(() => {
+    const el = programImgRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      // progress = 0 when section first enters bottom of viewport, 1 when it leaves the top
+      const total = rect.height + vh;
+      const progress = Math.max(0, Math.min(1, (vh - rect.top) / total));
+      const idx = Math.min(programGallery.length - 1, Math.floor(progress * programGallery.length));
+      setProgramIdx(idx);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+
   return (
     <Layout>
       {/* HERO */}
@@ -60,7 +87,7 @@ const Index = () => {
         <div
           className="absolute inset-0 opacity-30 mix-blend-luminosity"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80')`,
+            backgroundImage: `url('${photos.happy}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -108,7 +135,7 @@ const Index = () => {
           </Reveal>
           <Reveal delay={120} className="rounded-3xl overflow-hidden shadow-elevated aspect-[16/10]">
             <img
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1400&q=80"
+              src={photos.together}
               alt="Community workers gathering with children in Uganda"
               className="w-full h-full object-cover"
             />
@@ -156,21 +183,21 @@ const Index = () => {
                 suffix: "+",
                 label: "Lives Impacted",
                 icon: HeartHandshake,
-                image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
+                image: photos.happy,
               },
               {
                 value: 300,
                 suffix: "+",
                 label: "Meals Delivered Weekly",
                 icon: Users,
-                image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1200&q=80",
+                image: photos.together,
               },
               {
                 value: 266,
                 suffix: "+",
                 label: "Volunteers Worldwide",
                 icon: Globe2,
-                image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1200&q=80",
+                image: photos.smile,
               },
             ].map((s, idx) => (
               <Reveal
@@ -268,12 +295,29 @@ const Index = () => {
           </div>
 
           <div className="grid lg:grid-cols-[0.9fr_1.3fr] gap-8 items-start">
-            <div className="rounded-3xl overflow-hidden shadow-elevated aspect-[4/5]">
-              <img
-                src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1000&q=80"
-                alt="Children in a community program"
-                className="w-full h-full object-cover"
-              />
+            <div ref={programImgRef} className="relative rounded-3xl overflow-hidden shadow-elevated aspect-[4/5] lg:sticky lg:top-28">
+              {programGallery.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt="Children in our community programs"
+                  loading="lazy"
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                    i === programIdx ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+              {/* Indicator dots */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                {programGallery.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all ${
+                      i === programIdx ? "w-6 bg-white" : "w-1.5 bg-white/40"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="space-y-4">
@@ -435,13 +479,13 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-elevated aspect-[21/10] group cursor-pointer">
+          <div className="relative rounded-3xl overflow-hidden shadow-elevated aspect-[21/10] group">
             <img
-              src="https://images.unsplash.com/photo-1511949860663-92c5c57d48a7?auto=format&fit=crop&w=2000&q=80"
-              alt="Children playing music in a field"
+              src={photos.eeee}
+              alt="A child watching attentively in class"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 via-carbon/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/30 to-transparent" />
 
             <div className="absolute inset-0 flex items-center justify-center">
               <button aria-label="Play video" className="h-20 w-20 md:h-24 md:w-24 rounded-full bg-primary flex items-center justify-center shadow-glow hover:scale-110 transition-transform">
@@ -449,9 +493,28 @@ const Index = () => {
               </button>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <div className="max-w-md bg-carbon/60 backdrop-blur-md rounded-2xl p-5 ring-1 ring-white/10">
-                <h3 className="text-white font-bold text-xl leading-tight">
+            {/* Thumbnails — bottom-left, click to open in lightbox */}
+            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex gap-2 z-10">
+              {featuredThumbs.map((src, i) => (
+                <Dialog key={i}>
+                  <DialogTrigger asChild>
+                    <button
+                      aria-label={`Open photo ${i + 1}`}
+                      className="h-14 w-14 md:h-20 md:w-20 rounded-xl overflow-hidden ring-2 ring-white/70 hover:ring-primary hover:scale-105 transition-all shadow-elevated"
+                    >
+                      <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none shadow-none">
+                    <img src={src} alt="" className="w-full h-auto rounded-2xl" />
+                  </DialogContent>
+                </Dialog>
+              ))}
+            </div>
+
+            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 max-w-md">
+              <div className="bg-carbon/70 backdrop-blur-md rounded-2xl p-5 ring-1 ring-white/10">
+                <h3 className="text-white font-bold text-lg md:text-xl leading-tight">
                   Bringing Hope: How a Single Day of Giving Changed Lives Forever
                 </h3>
                 <p className="text-carbon-muted text-sm mt-2">
@@ -491,7 +554,7 @@ const Index = () => {
         <div className="container grid md:grid-cols-2 gap-5">
           <div className="rounded-3xl overflow-hidden aspect-[5/4] md:aspect-auto md:min-h-[360px] relative">
             <img
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1400&q=80"
+              src={photos.smile}
               alt="Children at sunset"
               className="w-full h-full object-cover"
             />

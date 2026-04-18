@@ -23,7 +23,7 @@ const DonationTicker = () => {
   const d = seed[i];
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 hidden md:block animate-fade-up">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-4 z-40 animate-fade-up max-w-[calc(100vw-2rem)]">
       <div className="bg-card border border-border shadow-elevated rounded-full pl-2 pr-5 py-2 flex items-center gap-3 max-w-sm">
         <div className="h-9 w-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0">
           <Heart className="h-4 w-4 fill-current" />

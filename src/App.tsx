@@ -11,6 +11,7 @@ import About from "./pages/About.tsx";
 import Causes from "./pages/Causes.tsx";
 import CauseDetail from "./pages/CauseDetail.tsx";
 import Programs from "./pages/Programs.tsx";
+import ProgramDetail from "./pages/ProgramDetail.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import Contact from "./pages/Contact.tsx";
@@ -30,7 +31,7 @@ const AnimatedRoutes = () => {
         <Route path="/causes" element={<Causes />} />
         <Route path="/causes/:slug" element={<CauseDetail />} />
         <Route path="/programs" element={<Programs />} />
-        <Route path="/programs/:slug" element={<CauseDetail />} />
+        <Route path="/programs/:slug" element={<ProgramDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
