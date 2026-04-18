@@ -16,6 +16,7 @@ import Reveal from "@/components/Reveal";
 import Testimonials from "@/components/Testimonials";
 import SponsorAChild from "@/components/SponsorAChild";
 import Accreditations from "@/components/Accreditations";
+import ImpactMap from "@/components/ImpactMap";
 
 const formatMoney = (n: number) => `$${n.toLocaleString()}`;
 
@@ -460,6 +461,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <ImpactMap />
 
       <Testimonials />
       <SponsorAChild />
