@@ -5,11 +5,13 @@ import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Play
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import ProgressBar from "@/components/ProgressBar";
 import CountUp from "@/components/CountUp";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { causes, partners, faqs, stories } from "@/data/content";
+import { photos, programGallery } from "@/data/images";
 import Reveal from "@/components/Reveal";
 import Testimonials from "@/components/Testimonials";
 import SponsorAChild from "@/components/SponsorAChild";
@@ -21,24 +23,27 @@ const transformCards = [
   {
     title: "Aid Bringing Care",
     desc: "An ongoing initiative to bring relief, comfort and dignity to families in distress.",
-    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80",
+    image: photos.together,
   },
   {
     title: "A Strength to Stand",
     desc: "Programs that rebuild lives through mentorship, skills and emotional support.",
-    image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=900&q=80",
+    image: photos.education,
   },
   {
     title: "Power Meaningful Change",
     desc: "Funded by your love — turning intention into measurable impact every single day.",
-    image: "https://images.unsplash.com/photo-1518398046578-8cca57782e17?auto=format&fit=crop&w=900&q=80",
+    image: photos.smile,
   },
   {
     title: "Hope in Every Hand",
     desc: "Volunteers across borders showing up where help is needed the most.",
-    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80",
+    image: photos.eeee,
   },
 ];
+
+// Thumbnails shown on the "Be the Reason" CTA — click to open lightbox.
+const featuredThumbs = [photos.school, photos.edu, photos.rdue];
 
 const Index = () => {
   const autoplay = useRef(Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true }));
