@@ -8,43 +8,43 @@ import Accreditations from "@/components/Accreditations";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HeartHandshake } from "lucide-react";
 import { partners } from "@/data/content";
-import { photos } from "@/data/images";
+import { photos, team as teamPhotos } from "@/data/images";
 
 const team = [
   {
-    name: "Kyle Sam",
+    name: "Dan",
     role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+    image: teamPhotos.dan,
     span: "lg:col-span-2 aspect-[16/9]",
   },
   {
-    name: "Anna Smith",
+    name: "Anne",
     role: "Programs Director",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80",
+    image: teamPhotos.anne,
     span: "aspect-[4/5]",
   },
   {
-    name: "Lily Anne",
+    name: "Lily",
     role: "Community Lead",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
+    image: teamPhotos.lily,
     span: "aspect-[4/5]",
   },
   {
-    name: "Imanji Antonia",
-    role: "Fundraising Lead",
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=80",
+    name: "Imanji & Team",
+    role: "Partnerships & Legacy",
+    image: teamPhotos.legacyGroup,
     span: "lg:col-span-2 aspect-[16/9]",
   },
   {
-    name: "Olivia Carter",
+    name: "Anne",
     role: "Health & Outreach",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80",
+    image: teamPhotos.anne,
     span: "aspect-[4/5]",
   },
   {
-    name: "David Dawn",
+    name: "Dan",
     role: "Field Coordinator",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
+    image: teamPhotos.dan,
     span: "aspect-[4/5]",
   },
 ];
