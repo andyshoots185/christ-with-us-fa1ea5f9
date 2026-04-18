@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { toast } from "@/hooks/use-toast";
 import { faqs } from "@/data/content";
+import { photos } from "@/data/images";
 
 const schema = z.object({
   firstName: z.string().trim().min(1, "First name required").max(80),
@@ -52,14 +53,14 @@ const Contact = () => {
         tag="Contact"
         title="Reach Out. We're Here Always."
         subtitle="Have questions, ideas, or need support? Connect with us — we're ready to listen and help."
-        image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80"
+        image={photos.together}
       />
 
       <section className="py-20 bg-secondary/40">
         <div className="container">
           <div className="rounded-3xl overflow-hidden aspect-[21/8] mb-10 shadow-elevated">
             <img
-              src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80"
+              src={photos.smile}
               alt="Children smiling — community in Kampala"
               className="w-full h-full object-cover"
             />
