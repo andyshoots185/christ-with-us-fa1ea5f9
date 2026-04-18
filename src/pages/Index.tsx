@@ -87,7 +87,7 @@ const Index = () => {
         <div
           className="absolute inset-0 opacity-30 mix-blend-luminosity"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80')`,
+            backgroundImage: `url('${photos.happy}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -135,7 +135,7 @@ const Index = () => {
           </Reveal>
           <Reveal delay={120} className="rounded-3xl overflow-hidden shadow-elevated aspect-[16/10]">
             <img
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1400&q=80"
+              src={photos.together}
               alt="Community workers gathering with children in Uganda"
               className="w-full h-full object-cover"
             />
