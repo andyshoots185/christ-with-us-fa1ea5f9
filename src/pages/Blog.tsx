@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { stories } from "@/data/content";
+import { photos } from "@/data/images";
 
 const Blog = () => (
   <Layout>
@@ -10,7 +11,7 @@ const Blog = () => (
       tag="Blog"
       title="Latest Stories That Inspire Hope"
       subtitle="Explore meaningful updates, community highlights and real stories from the ground."
-      image="/src/assets/photos/eeee.jpg"
+      image={photos.eeee}
     />
     <section className="py-20 bg-secondary/40">
       <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-6">
