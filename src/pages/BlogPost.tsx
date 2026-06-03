@@ -14,7 +14,7 @@ const BlogPost = () => {
 
   return (
     <Layout>
-      <PageHero tag={post.category} title={post.title} subtitle={`${post.author ?? "Christ With Us"} · ${post.date}`} image={post.image} />
+      <PageHero tag={post.category} title={post.title} subtitle={`${post.author ?? "Arsenal Fund Uganda"} · ${post.date}`} image={post.image} />
 
       <section className="py-20 bg-background">
         <div className="container max-w-3xl">
@@ -27,7 +27,7 @@ const BlogPost = () => {
 
           <div className="flex flex-wrap items-center gap-5 text-sm text-muted-foreground mb-8">
             <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold">{post.category}</span>
-            <span className="flex items-center gap-1.5"><User className="h-4 w-4" /> {post.author ?? "Christ With Us"}</span>
+            <span className="flex items-center gap-1.5"><User className="h-4 w-4" /> {post.author ?? "Arsenal Fund Uganda"}</span>
             <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" /> {post.date}</span>
             {post.readTime && <span>{post.readTime}</span>}
           </div>

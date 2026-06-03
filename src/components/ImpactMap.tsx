@@ -119,7 +119,7 @@ const ImpactMap = () => {
               <MapPin className="h-3.5 w-3.5" /> Where We Serve
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Our Global <span className="text-gradient-green">Impact Map</span>
+              Our Global <span className="text-gradient-arsenal">Impact Map</span>
             </h2>
             <p className="text-carbon-muted">
               Hover or tap a pin to see the communities we reach and the programs running on the ground.

@@ -40,7 +40,7 @@ const Header = () => {
         <Link to="/" className="flex items-center gap-2 pl-2 sm:pl-3 pr-2 sm:pr-4 py-1.5 rounded-full">
           <Heart className="h-5 w-5 text-primary fill-primary" strokeWidth={2.5} />
           <span className="font-bold text-white tracking-tight text-base sm:text-lg whitespace-nowrap">
-            Christ With Us
+            Arsenal Fund Uganda
           </span>
         </Link>
 

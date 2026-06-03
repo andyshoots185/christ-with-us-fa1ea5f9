@@ -65,7 +65,7 @@ const Footer = () => {
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
               <Heart className="h-6 w-6 text-primary fill-primary" />
-              <span className="font-bold text-2xl text-gradient-green">Christ With Us</span>
+              <span className="font-bold text-2xl text-gradient-arsenal">Arsenal Fund Uganda</span>
             </Link>
             <p className="text-carbon-muted max-w-xs leading-relaxed">
               Be the first to hear how you're making a difference in Kampala and beyond.
@@ -117,14 +117,14 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-5">Contact us</h4>
             <ul className="space-y-3 text-carbon-muted text-sm">
               <li>+256 772 000 000</li>
-              <li>hello@christwithus.org</li>
+              <li>hello@arsenalfunduganda.org</li>
               <li>Plot 14, Ntinda Road,<br/>Kampala, Uganda</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-sm text-carbon-muted">
-          <p>© {new Date().getFullYear()} Christ With Us — Kampala, Uganda. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Arsenal Fund Uganda — Kampala, Uganda. All rights reserved.</p>
           <p>Built with hope, for the community.</p>
         </div>
       </div>

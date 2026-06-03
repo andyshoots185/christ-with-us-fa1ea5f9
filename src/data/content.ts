@@ -355,7 +355,7 @@ export const partners = [
 ];
 
 export const faqs = [
-  { q: "What is your NGO's mission?", a: "Christ With Us is a Kampala-based, faith-driven nonprofit working to bring hope, education, healthcare, clean water and dignity to vulnerable communities across Uganda." },
+  { q: "What is your NGO's mission?", a: "Arsenal Fund Uganda is a Kampala-based, faith-driven nonprofit working to bring hope, education, healthcare, clean water and dignity to vulnerable communities across Uganda." },
   { q: "How are donations used?", a: "85% of every donation goes directly to programs on the ground. The remaining 15% covers operations, transparent reporting and infrastructure that keeps our impact compounding." },
   { q: "Can I volunteer?", a: "Absolutely — we welcome volunteers locally and internationally. Apply through our Contact page and our team will match you to a project that fits your skills." },
   { q: "Besides donating, how else can I help?", a: "Share our stories, sponsor a child's education, host a community fundraiser, or partner with us as an organization. Every action multiplies." },
@@ -367,7 +367,7 @@ export const testimonials = [
     name: "Sarah N.",
     role: "Mother, Mukono",
     rating: 5,
-    quote: "Christ With Us didn't just feed my family — they helped me start a vegetable stand. Today I employ two of my neighbors.",
+    quote: "Arsenal Fund Uganda didn't just feed my family — they helped me start a vegetable stand. Today I employ two of my neighbors.",
   },
   {
     name: "John M.",

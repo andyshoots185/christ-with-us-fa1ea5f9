@@ -102,10 +102,10 @@ const Index = () => {
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight animate-fade-up">
               Unite. Act.<br />
-              <span className="text-gradient-green">Transform.</span>
+              <span className="text-gradient-arsenal">Transform.</span>
             </h1>
             <p className="mt-7 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed animate-fade-up">
-              Christ With Us is a purpose-driven nonprofit working hand-in-hand with communities across Uganda to create lasting change — through education, healthcare, clean water and unwavering hope.
+              Arsenal Fund Uganda is a purpose-driven nonprofit working hand-in-hand with communities across Uganda to create lasting change — through education, healthcare, clean water and unwavering hope.
             </p>
             <div className="mt-10 flex flex-wrap gap-3 animate-fade-up">
               <Button asChild size="lg" className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground font-semibold px-7 h-12 shadow-glow">
@@ -578,7 +578,7 @@ const Index = () => {
               </p>
             </div>
             <div>
-              <div className="text-5xl md:text-6xl font-black text-gradient-green leading-none">
+              <div className="text-5xl md:text-6xl font-black text-gradient-arsenal leading-none">
                 <CountUp end={1660000} prefix="$" suffix="+" />
               </div>
               <p className="text-carbon-muted mt-2">Raised globally this year</p>
