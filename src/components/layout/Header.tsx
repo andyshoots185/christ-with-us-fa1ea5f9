@@ -7,10 +7,12 @@ import { useAutoHideOnScroll } from "@/hooks/use-scroll-direction";
 
 const links = [
   { to: "/about", label: "About" },
-  { to: "/causes", label: "Causes" },
   { to: "/programs", label: "Programs" },
+  { to: "/membership", label: "Membership" },
+  { to: "/events", label: "Events" },
+  { to: "/volunteer", label: "Volunteer" },
+  { to: "/gallery", label: "Gallery" },
   { to: "/blog", label: "Blog" },
-  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ];
 
