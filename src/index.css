@@ -116,7 +116,7 @@
     background: var(--gradient-hero);
   }
   .text-gradient-arsenal {
-    background: var(--gradient-green);
+    background: var(--gradient-arsenal);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
