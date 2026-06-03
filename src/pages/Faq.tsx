@@ -21,8 +21,8 @@ const categories = [
     icon: HelpCircle,
     items: [
       {
-        q: "What is Christ With Us?",
-        a: "Christ With Us is a Kampala-based, faith-driven nonprofit working to bring hope, education, healthcare, clean water and dignity to vulnerable communities across Uganda.",
+        q: "What is Arsenal Fund Uganda?",
+        a: "Arsenal Fund Uganda is a Kampala-based, faith-driven nonprofit working to bring hope, education, healthcare, clean water and dignity to vulnerable communities across Uganda.",
       },
       {
         q: "Where do you operate?",

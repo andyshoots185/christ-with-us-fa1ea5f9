@@ -98,18 +98,22 @@ const Index = () => {
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 text-primary text-xs font-semibold mb-7 ring-1 ring-primary/30 animate-fade-up">
-              <Sparkles className="h-3.5 w-3.5" /> Together for Change · Kampala, Uganda
+              <Sparkles className="h-3.5 w-3.5" /> Arsenal Fans · For Uganda · Forever
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight animate-fade-up">
-              Unite. Act.<br />
-              <span className="text-gradient-green">Transform.</span>
+              Uniting Arsenal Fans<br />
+              to <span className="text-gradient-arsenal">Change Lives</span><br />
+              Across Uganda.
             </h1>
             <p className="mt-7 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed animate-fade-up">
-              Christ With Us is a purpose-driven nonprofit working hand-in-hand with communities across Uganda to create lasting change — through education, healthcare, clean water and unwavering hope.
+              Arsenal Fund Uganda is a community initiative founded by Arsenal Football Club supporters — channeling the passion of the red &amp; white into education, healthcare, food relief and youth empowerment for vulnerable communities across Uganda.
             </p>
             <div className="mt-10 flex flex-wrap gap-3 animate-fade-up">
               <Button asChild size="lg" className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground font-semibold px-7 h-12 shadow-glow">
-                <Link to="/donate">Get Started <ArrowRight className="ml-1 h-4 w-4" /></Link>
+                <Link to="/membership">Join the Movement <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              </Button>
+              <Button asChild size="lg" className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-7 h-12">
+                <Link to="/donate">Donate Now</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full bg-transparent border-white/25 text-white hover:bg-white hover:text-carbon h-12 px-7">
                 <Link to="/about">Learn More</Link>
@@ -578,7 +582,7 @@ const Index = () => {
               </p>
             </div>
             <div>
-              <div className="text-5xl md:text-6xl font-black text-gradient-green leading-none">
+              <div className="text-5xl md:text-6xl font-black text-gradient-arsenal leading-none">
                 <CountUp end={1660000} prefix="$" suffix="+" />
               </div>
               <p className="text-carbon-muted mt-2">Raised globally this year</p>

@@ -217,7 +217,7 @@ const About = () => (
               </p>
             </div>
             <div>
-              <div className="text-5xl md:text-6xl font-black text-gradient-green leading-none">
+              <div className="text-5xl md:text-6xl font-black text-gradient-arsenal leading-none">
                 <CountUp end={1660000} prefix="$" suffix="+" />
               </div>
               <p className="text-carbon-muted mt-2">Raised globally this year</p>

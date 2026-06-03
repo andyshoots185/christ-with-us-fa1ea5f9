@@ -17,6 +17,10 @@ import BlogPost from "./pages/BlogPost.tsx";
 import Contact from "./pages/Contact.tsx";
 import Donate from "./pages/Donate.tsx";
 import Faq from "./pages/Faq.tsx";
+import Membership from "./pages/Membership.tsx";
+import Events from "./pages/Events.tsx";
+import Volunteer from "./pages/Volunteer.tsx";
+import Gallery from "./pages/Gallery.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -37,6 +41,10 @@ const AnimatedRoutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/donate" element={<Donate />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/membership" element={<Membership />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/volunteer" element={<Volunteer />} />
+        <Route path="/gallery" element={<Gallery />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
