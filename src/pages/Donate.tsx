@@ -1,75 +1,56 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import SponsorAChild from "@/components/SponsorAChild";
 import Accreditations from "@/components/Accreditations";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Heart } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
+import { Heart, MessageCircle, Phone, ArrowRight } from "lucide-react";
 import { photos } from "@/data/images";
-
-const presets = [25, 50, 100, 250];
+import { donateWhatsAppUrl, telHref, LOCAL_PHONE } from "@/lib/contact";
 
 const Donate = () => {
-  const [amount, setAmount] = useState<number>(50);
-  const [custom, setCustom] = useState("");
-
-  const handleDonate = () => {
-    const value = custom ? Number(custom) : amount;
-    if (!value || value < 1) {
-      toast({ title: "Enter an amount", description: "Please choose or enter a donation amount.", variant: "destructive" });
-      return;
-    }
-    toast({ title: "Thank you 💚", description: `Your $${value} donation will change lives — payment integration coming soon.` });
-  };
+  useEffect(() => {
+    document.title = "Donate — Arsenal Fund Uganda";
+  }, []);
 
   return (
     <Layout>
       <PageHero
         tag="Donate"
         title="Your Gift Becomes Hope"
-        subtitle="100% of your donation reaches the field. Choose an amount and join thousands of changemakers."
+        subtitle="Reach out directly on WhatsApp or by phone — we'll guide you through the safest way to send your support."
         image={photos.happy}
       />
-      <section className="py-20 bg-secondary/40">
+      <section className="py-16 sm:py-20 bg-secondary/40">
         <div className="container max-w-2xl">
-          <Reveal className="bg-card rounded-3xl p-8 md:p-10 shadow-elevated border border-border">
+          <Reveal className="bg-card rounded-3xl p-6 sm:p-8 md:p-10 shadow-elevated border border-border">
             <Heart className="h-10 w-10 text-primary fill-primary mb-4" />
-            <h2 className="text-2xl md:text-3xl font-bold">Make a one-time donation</h2>
-            <p className="text-muted-foreground mt-2">Every contribution, large or small, multiplies on the ground.</p>
+            <h2 className="text-2xl md:text-3xl font-bold">Talk to us — donate in 1 message</h2>
+            <p className="text-muted-foreground mt-2 text-sm sm:text-base">
+              Tap below to send us a WhatsApp message or call directly. We'll personally share secure donation channels, confirm where your gift is going, and send you proof of impact.
+            </p>
 
-            <div className="mt-8 grid grid-cols-4 gap-3">
-              {presets.map((p) => (
-                <button
-                  key={p}
-                  onClick={() => { setAmount(p); setCustom(""); }}
-                  className={`rounded-2xl py-4 font-bold text-lg transition-all ${
-                    amount === p && !custom
-                      ? "bg-primary text-primary-foreground shadow-glow"
-                      : "bg-secondary hover:bg-secondary/70"
-                  }`}
-                >
-                  ${p}
-                </button>
-              ))}
+            <div className="mt-8 grid sm:grid-cols-2 gap-3">
+              <Button asChild className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground h-13 py-4 font-semibold shadow-glow">
+                <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="mr-2 h-5 w-5" /> Donate via WhatsApp
+                </a>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full h-13 py-4 font-semibold">
+                <a href={telHref}>
+                  <Phone className="mr-2 h-5 w-5" /> Call {LOCAL_PHONE}
+                </a>
+              </Button>
             </div>
 
-            <div className="mt-5">
-              <Input
-                type="number"
-                min={1}
-                placeholder="Custom amount (USD)"
-                value={custom}
-                onChange={(e) => setCustom(e.target.value)}
-                className="rounded-full h-12 px-5 bg-secondary border-transparent"
-              />
-            </div>
-
-            <Button onClick={handleDonate} className="mt-6 w-full rounded-full bg-primary hover:bg-primary-glow text-primary-foreground h-13 py-3 font-semibold shadow-glow">
-              Donate Now
-            </Button>
+            <p className="text-xs text-muted-foreground text-center mt-6">
+              Prefer email or to ask questions first?{" "}
+              <Link to="/contact" className="text-primary font-semibold inline-flex items-center gap-1">
+                Visit our contact page <ArrowRight className="h-3 w-3" />
+              </Link>
+            </p>
           </Reveal>
         </div>
       </section>

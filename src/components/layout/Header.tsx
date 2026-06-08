@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useAutoHideOnScroll } from "@/hooks/use-scroll-direction";
+import { donateWhatsAppUrl } from "@/lib/contact";
 
 const links = [
   { to: "/about", label: "About" },
@@ -70,7 +71,7 @@ const Header = () => {
             size="sm"
             className="hidden sm:inline-flex rounded-full bg-primary hover:bg-primary-glow text-primary-foreground font-semibold px-5 shadow-glow"
           >
-            <Link to="/donate">Donate Now</Link>
+            <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">Donate Now</a>
           </Button>
           <button
             onClick={() => setOpen(!open)}
@@ -105,7 +106,7 @@ const Header = () => {
             className="mt-2 w-full rounded-full bg-primary hover:bg-primary-glow text-primary-foreground font-semibold shadow-glow"
             onClick={() => setOpen(false)}
           >
-            <Link to="/donate">Donate Now</Link>
+            <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">Donate Now</a>
           </Button>
         </div>
       )}

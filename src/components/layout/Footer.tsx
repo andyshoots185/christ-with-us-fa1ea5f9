@@ -116,9 +116,9 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-5">Contact us</h4>
             <ul className="space-y-3 text-carbon-muted text-sm">
-              <li>+256 772 000 000</li>
-              <li>hello@arsenalfunduganda.org</li>
-              <li>Plot 14, Ntinda Road,<br/>Kampala, Uganda</li>
+              <li><a href="tel:+256703639277" className="hover:text-primary transition-colors">+256 703 639 277</a></li>
+              <li><a href="mailto:hello@arsenalfunduganda.org" className="hover:text-primary transition-colors">hello@arsenalfunduganda.org</a></li>
+              <li>Kampala, Uganda</li>
             </ul>
           </div>
         </div>

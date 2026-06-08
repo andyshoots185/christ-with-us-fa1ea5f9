@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Play } from "lucide-react";
+import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Trophy } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -17,6 +17,8 @@ import Testimonials from "@/components/Testimonials";
 import SponsorAChild from "@/components/SponsorAChild";
 import Accreditations from "@/components/Accreditations";
 import ImpactMap from "@/components/ImpactMap";
+import { donateWhatsAppUrl } from "@/lib/contact";
+import streetKidsVideo from "@/assets/street-kids.mp4.asset.json";
 
 const formatMoney = (n: number) => `$${n.toLocaleString()}`;
 
@@ -113,7 +115,7 @@ const Index = () => {
                 <Link to="/membership">Join the Movement <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-7 h-12">
-                <Link to="/donate">Donate Now</Link>
+                <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">Donate Now</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full bg-transparent border-white/25 text-white hover:bg-white hover:text-carbon h-12 px-7">
                 <Link to="/about">Learn More</Link>
@@ -122,6 +124,29 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* PREMIER LEAGUE CONGRATULATIONS BANNER */}
+      <section className="relative py-12 md:py-16 overflow-hidden" style={{ background: "var(--gradient-arsenal)" }}>
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, white 1px, transparent 1px), radial-gradient(circle at 80% 70%, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} aria-hidden="true" />
+        <div className="container relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-left">
+            <div className="h-20 w-20 md:h-24 md:w-24 rounded-full bg-white/15 backdrop-blur-sm ring-2 ring-white/40 flex items-center justify-center shrink-0 shadow-glow">
+              <Trophy className="h-10 w-10 md:h-12 md:w-12 text-white" />
+            </div>
+            <div className="flex-1">
+              <span className="inline-block text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-white/90 mb-2">● Champions of England</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight">
+                Congratulations Arsenal FC — Premier League Champions!
+              </h2>
+              <p className="mt-3 text-white/90 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed">
+                After <strong>22 long years</strong> of belief, heartbreak and unwavering loyalty, the wait is finally over. To every Gooner who never stopped singing, every fan in Uganda who watched at dawn, every heart that bled red and white — this one is for you. <em>Victoria Concordia Crescit.</em> 🏆
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* INTRO STRIP */}
       <section className="bg-secondary/40 py-16">
@@ -471,67 +496,71 @@ const Index = () => {
       <Testimonials />
       <SponsorAChild />
 
-      {/* STORIES BRINGING HOPE — large video card */}
-      <section className="py-24 bg-secondary/40">
+      {/* STREET KIDS — real footage that needs help */}
+      <section className="py-16 sm:py-24 bg-secondary/40">
         <div className="container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-10">
             <div>
-              <span className="text-primary text-xs font-bold tracking-widest uppercase">● Featured</span>
+              <span className="text-primary text-xs font-bold tracking-widest uppercase">● They Need Us Now</span>
               <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight max-w-xl">
-                Stories Bringing Hope
+                Children Sleeping on the Streets of Uganda
               </h2>
             </div>
-            <p className="text-muted-foreground max-w-sm">
-              Watch how a single act of generosity reshaped an entire community in rural Uganda.
+            <p className="text-muted-foreground max-w-sm text-sm sm:text-base">
+              This is real footage from our streets. These are not statistics — they are children with names, dreams and futures. Your support gives them a safe night, a meal, and hope.
             </p>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-elevated aspect-[21/10] group">
-            <img
-              src={photos.eeee}
-              alt="A child watching attentively in class"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/30 to-transparent" />
+          <div className="relative rounded-3xl overflow-hidden shadow-elevated bg-carbon">
+            <video
+              src={streetKidsVideo.url}
+              controls
+              playsInline
+              preload="metadata"
+              poster={photos.eeee}
+              className="w-full h-auto max-h-[70vh] object-contain bg-black"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button aria-label="Play video" className="h-20 w-20 md:h-24 md:w-24 rounded-full bg-primary flex items-center justify-center shadow-glow hover:scale-110 transition-transform">
-                <Play className="h-8 w-8 text-primary-foreground fill-current ml-1" />
-              </button>
-            </div>
-
-            {/* Thumbnails — bottom-left, click to open in lightbox */}
-            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex gap-2 z-10">
-              {featuredThumbs.map((src, i) => (
-                <Dialog key={i}>
-                  <DialogTrigger asChild>
-                    <button
-                      aria-label={`Open photo ${i + 1}`}
-                      className="h-14 w-14 md:h-20 md:w-20 rounded-xl overflow-hidden ring-2 ring-white/70 hover:ring-primary hover:scale-105 transition-all shadow-elevated"
-                    >
-                      <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
-                    </button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none shadow-none">
-                    <img src={src} alt="" className="w-full h-auto rounded-2xl" />
-                  </DialogContent>
-                </Dialog>
-              ))}
-            </div>
-
-            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 max-w-md">
-              <div className="bg-carbon/70 backdrop-blur-md rounded-2xl p-5 ring-1 ring-white/10">
-                <h3 className="text-white font-bold text-lg md:text-xl leading-tight">
-                  Bringing Hope: How a Single Day of Giving Changed Lives Forever
-                </h3>
-                <p className="text-carbon-muted text-sm mt-2">
-                  Watch the documentary →
-                </p>
-              </div>
-            </div>
+          <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-card rounded-2xl p-5 sm:p-6 border border-border shadow-card">
+            <p className="text-sm sm:text-base text-foreground/90 font-medium">
+              Will you help us get them off the streets? Every contribution becomes shelter, food and a future.
+            </p>
+            <Button asChild className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-6 h-12 shadow-glow shrink-0">
+              <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                Donate via WhatsApp <ArrowRight className="ml-1 h-4 w-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </section>
+
+      {/* FEATURED THUMBNAILS — quick gallery preview */}
+      <section className="pb-16 sm:pb-24 bg-secondary/40">
+        <div className="container">
+          <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center">
+            {featuredThumbs.map((src, i) => (
+              <Dialog key={i}>
+                <DialogTrigger asChild>
+                  <button
+                    aria-label={`Open photo ${i + 1}`}
+                    className="h-24 w-24 sm:h-32 sm:w-32 md:h-40 md:w-40 rounded-2xl overflow-hidden ring-2 ring-border hover:ring-primary hover:scale-105 transition-all shadow-card shrink-0"
+                  >
+                    <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none shadow-none">
+                  <img src={src} alt="" className="w-full h-auto rounded-2xl" />
+                </DialogContent>
+              </Dialog>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
       {/* FAQ */}
       <section className="py-24 bg-background">
@@ -572,22 +601,22 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl carbon hero-bg p-10 md:p-12 flex flex-col justify-between min-h-[360px]">
-            <div className="flex items-center gap-4">
-              <div className="h-16 w-16 rounded-2xl bg-primary/15 ring-1 ring-primary/30 flex items-center justify-center">
-                <HeartHandshake className="h-8 w-8 text-primary" />
+          <div className="rounded-3xl carbon hero-bg p-6 sm:p-8 md:p-12 flex flex-col justify-between gap-8 min-h-[320px] md:min-h-[360px]">
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-2xl bg-primary/15 ring-1 ring-primary/30 flex items-center justify-center shrink-0">
+                <HeartHandshake className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
               </div>
-              <p className="text-carbon-muted max-w-xs">
+              <p className="text-carbon-muted text-sm sm:text-base max-w-xs">
                 Join us — every generous heart pushes the total higher.
               </p>
             </div>
             <div>
-              <div className="text-5xl md:text-6xl font-black text-gradient-arsenal leading-none">
+              <div className="text-3xl sm:text-4xl md:text-6xl font-black text-gradient-arsenal leading-none break-words">
                 <CountUp end={1660000} prefix="$" suffix="+" />
               </div>
-              <p className="text-carbon-muted mt-2">Raised globally this year</p>
-              <Button asChild className="mt-6 rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-8 h-12 shadow-glow w-full md:w-auto">
-                <Link to="/donate">Donate Now <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              <p className="text-carbon-muted mt-2 text-sm sm:text-base">Raised globally this year</p>
+              <Button asChild className="mt-6 rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-6 sm:px-8 h-12 shadow-glow w-full sm:w-auto">
+                <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">Donate Now <ArrowRight className="ml-1 h-4 w-4" /></a>
               </Button>
             </div>
           </div>
