@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Play } from "lucide-react";
+import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Play, Trophy } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -17,6 +17,8 @@ import Testimonials from "@/components/Testimonials";
 import SponsorAChild from "@/components/SponsorAChild";
 import Accreditations from "@/components/Accreditations";
 import ImpactMap from "@/components/ImpactMap";
+import { donateWhatsAppUrl } from "@/lib/contact";
+import streetKidsVideo from "@/assets/street-kids.mp4.asset.json";
 
 const formatMoney = (n: number) => `$${n.toLocaleString()}`;
 
@@ -113,7 +115,7 @@ const Index = () => {
                 <Link to="/membership">Join the Movement <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-7 h-12">
-                <Link to="/donate">Donate Now</Link>
+                <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">Donate Now</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full bg-transparent border-white/25 text-white hover:bg-white hover:text-carbon h-12 px-7">
                 <Link to="/about">Learn More</Link>
@@ -122,6 +124,29 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* PREMIER LEAGUE CONGRATULATIONS BANNER */}
+      <section className="relative py-12 md:py-16 overflow-hidden" style={{ background: "var(--gradient-arsenal)" }}>
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, white 1px, transparent 1px), radial-gradient(circle at 80% 70%, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} aria-hidden="true" />
+        <div className="container relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-left">
+            <div className="h-20 w-20 md:h-24 md:w-24 rounded-full bg-white/15 backdrop-blur-sm ring-2 ring-white/40 flex items-center justify-center shrink-0 shadow-glow">
+              <Trophy className="h-10 w-10 md:h-12 md:w-12 text-white" />
+            </div>
+            <div className="flex-1">
+              <span className="inline-block text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-white/90 mb-2">● Champions of England</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight">
+                Congratulations Arsenal FC — Premier League Champions!
+              </h2>
+              <p className="mt-3 text-white/90 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed">
+                After <strong>22 long years</strong> of belief, heartbreak and unwavering loyalty, the wait is finally over. To every Gooner who never stopped singing, every fan in Uganda who watched at dawn, every heart that bled red and white — this one is for you. <em>Victoria Concordia Crescit.</em> 🏆
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* INTRO STRIP */}
       <section className="bg-secondary/40 py-16">
@@ -572,22 +597,22 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl carbon hero-bg p-10 md:p-12 flex flex-col justify-between min-h-[360px]">
-            <div className="flex items-center gap-4">
-              <div className="h-16 w-16 rounded-2xl bg-primary/15 ring-1 ring-primary/30 flex items-center justify-center">
-                <HeartHandshake className="h-8 w-8 text-primary" />
+          <div className="rounded-3xl carbon hero-bg p-6 sm:p-8 md:p-12 flex flex-col justify-between gap-8 min-h-[320px] md:min-h-[360px]">
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-2xl bg-primary/15 ring-1 ring-primary/30 flex items-center justify-center shrink-0">
+                <HeartHandshake className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
               </div>
-              <p className="text-carbon-muted max-w-xs">
+              <p className="text-carbon-muted text-sm sm:text-base max-w-xs">
                 Join us — every generous heart pushes the total higher.
               </p>
             </div>
             <div>
-              <div className="text-5xl md:text-6xl font-black text-gradient-arsenal leading-none">
+              <div className="text-3xl sm:text-4xl md:text-6xl font-black text-gradient-arsenal leading-none break-words">
                 <CountUp end={1660000} prefix="$" suffix="+" />
               </div>
-              <p className="text-carbon-muted mt-2">Raised globally this year</p>
-              <Button asChild className="mt-6 rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-8 h-12 shadow-glow w-full md:w-auto">
-                <Link to="/donate">Donate Now <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              <p className="text-carbon-muted mt-2 text-sm sm:text-base">Raised globally this year</p>
+              <Button asChild className="mt-6 rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-6 sm:px-8 h-12 shadow-glow w-full sm:w-auto">
+                <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">Donate Now <ArrowRight className="ml-1 h-4 w-4" /></a>
               </Button>
             </div>
           </div>
