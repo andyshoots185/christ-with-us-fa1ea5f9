@@ -496,67 +496,71 @@ const Index = () => {
       <Testimonials />
       <SponsorAChild />
 
-      {/* STORIES BRINGING HOPE — large video card */}
-      <section className="py-24 bg-secondary/40">
+      {/* STREET KIDS — real footage that needs help */}
+      <section className="py-16 sm:py-24 bg-secondary/40">
         <div className="container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-10">
             <div>
-              <span className="text-primary text-xs font-bold tracking-widest uppercase">● Featured</span>
+              <span className="text-primary text-xs font-bold tracking-widest uppercase">● They Need Us Now</span>
               <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight max-w-xl">
-                Stories Bringing Hope
+                Children Sleeping on the Streets of Uganda
               </h2>
             </div>
-            <p className="text-muted-foreground max-w-sm">
-              Watch how a single act of generosity reshaped an entire community in rural Uganda.
+            <p className="text-muted-foreground max-w-sm text-sm sm:text-base">
+              This is real footage from our streets. These are not statistics — they are children with names, dreams and futures. Your support gives them a safe night, a meal, and hope.
             </p>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-elevated aspect-[21/10] group">
-            <img
-              src={photos.eeee}
-              alt="A child watching attentively in class"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/30 to-transparent" />
+          <div className="relative rounded-3xl overflow-hidden shadow-elevated bg-carbon">
+            <video
+              src={streetKidsVideo.url}
+              controls
+              playsInline
+              preload="metadata"
+              poster={photos.eeee}
+              className="w-full h-auto max-h-[70vh] object-contain bg-black"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button aria-label="Play video" className="h-20 w-20 md:h-24 md:w-24 rounded-full bg-primary flex items-center justify-center shadow-glow hover:scale-110 transition-transform">
-                <Play className="h-8 w-8 text-primary-foreground fill-current ml-1" />
-              </button>
-            </div>
-
-            {/* Thumbnails — bottom-left, click to open in lightbox */}
-            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex gap-2 z-10">
-              {featuredThumbs.map((src, i) => (
-                <Dialog key={i}>
-                  <DialogTrigger asChild>
-                    <button
-                      aria-label={`Open photo ${i + 1}`}
-                      className="h-14 w-14 md:h-20 md:w-20 rounded-xl overflow-hidden ring-2 ring-white/70 hover:ring-primary hover:scale-105 transition-all shadow-elevated"
-                    >
-                      <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
-                    </button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none shadow-none">
-                    <img src={src} alt="" className="w-full h-auto rounded-2xl" />
-                  </DialogContent>
-                </Dialog>
-              ))}
-            </div>
-
-            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 max-w-md">
-              <div className="bg-carbon/70 backdrop-blur-md rounded-2xl p-5 ring-1 ring-white/10">
-                <h3 className="text-white font-bold text-lg md:text-xl leading-tight">
-                  Bringing Hope: How a Single Day of Giving Changed Lives Forever
-                </h3>
-                <p className="text-carbon-muted text-sm mt-2">
-                  Watch the documentary →
-                </p>
-              </div>
-            </div>
+          <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-card rounded-2xl p-5 sm:p-6 border border-border shadow-card">
+            <p className="text-sm sm:text-base text-foreground/90 font-medium">
+              Will you help us get them off the streets? Every contribution becomes shelter, food and a future.
+            </p>
+            <Button asChild className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-6 h-12 shadow-glow shrink-0">
+              <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                Donate via WhatsApp <ArrowRight className="ml-1 h-4 w-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </section>
+
+      {/* FEATURED THUMBNAILS — quick gallery preview */}
+      <section className="pb-16 sm:pb-24 bg-secondary/40">
+        <div className="container">
+          <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center">
+            {featuredThumbs.map((src, i) => (
+              <Dialog key={i}>
+                <DialogTrigger asChild>
+                  <button
+                    aria-label={`Open photo ${i + 1}`}
+                    className="h-24 w-24 sm:h-32 sm:w-32 md:h-40 md:w-40 rounded-2xl overflow-hidden ring-2 ring-border hover:ring-primary hover:scale-105 transition-all shadow-card shrink-0"
+                  >
+                    <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none shadow-none">
+                  <img src={src} alt="" className="w-full h-auto rounded-2xl" />
+                </DialogContent>
+              </Dialog>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
       {/* FAQ */}
       <section className="py-24 bg-background">
