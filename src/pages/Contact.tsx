@@ -23,8 +23,8 @@ const schema = z.object({
 
 const infoItems = [
   { icon: Mail, label: "Our Mail", value: "hello@arsenalfunduganda.org" },
-  { icon: Phone, label: "Our Contact", value: "+256 772 000 000" },
-  { icon: MapPin, label: "Our Address", value: "Plot 14, Ntinda Road, Kampala, Uganda" },
+  { icon: Phone, label: "Our Contact", value: "+256 703 639 277" },
+  { icon: MapPin, label: "Our Address", value: "Kampala, Uganda" },
 ];
 
 const Contact = () => {
