@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Play, Trophy } from "lucide-react";
+import { ArrowRight, HeartHandshake, Sparkles, Users, Globe2, ChevronRight, Trophy } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
