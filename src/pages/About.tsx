@@ -6,9 +6,9 @@ import Reveal from "@/components/Reveal";
 import Testimonials from "@/components/Testimonials";
 import Accreditations from "@/components/Accreditations";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, HeartHandshake, Code2, Linkedin, Globe2 } from "lucide-react";
+import { ArrowRight, HeartHandshake, Code2, Globe2 } from "lucide-react";
 import { partners } from "@/data/content";
-import { photos, team as teamPhotos } from "@/data/images";
+import { photos } from "@/data/images";
 import { donateWhatsAppUrl, INTL_PHONE } from "@/lib/contact";
 
 const About = () => (
