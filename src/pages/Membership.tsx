@@ -14,7 +14,7 @@ import { toast } from "@/hooks/use-toast";
 const tiers = [
   {
     name: "Supporter",
-    price: "UGX 20,000",
+    price: "$165",
     cadence: "/ year",
     icon: Users,
     perks: [
@@ -26,7 +26,7 @@ const tiers = [
   },
   {
     name: "Gunner",
-    price: "UGX 60,000",
+    price: "$300",
     cadence: "/ year",
     icon: Trophy,
     featured: true,
@@ -40,7 +40,7 @@ const tiers = [
   },
   {
     name: "Legacy",
-    price: "UGX 200,000",
+    price: "$750",
     cadence: "/ year",
     icon: Crown,
     perks: [
