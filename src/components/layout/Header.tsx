@@ -3,7 +3,6 @@ import { Heart, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useAutoHideOnScroll } from "@/hooks/use-scroll-direction";
 import { donateWhatsAppUrl } from "@/lib/contact";
 
 const links = [
@@ -19,9 +18,6 @@ const links = [
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const visible = useAutoHideOnScroll();
-  // Always show when mobile menu open
-  const show = visible || open;
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -34,10 +30,9 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl transition-all duration-300 ease-out will-change-transform",
-        show ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0"
+        "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl transition-all duration-300 ease-out will-change-transform translate-y-0 opacity-100"
       )}
-      style={{ transform: show ? "translate(-50%, 0)" : "translate(-50%, -150%)" }}
+      style={{ transform: "translate(-50%, 0)" }}
     >
       <nav className="glass-nav rounded-full px-3 py-2 flex items-center justify-between gap-2">
         <Link to="/" className="flex items-center gap-2 pl-2 sm:pl-3 pr-2 sm:pr-4 py-1.5 rounded-full">
