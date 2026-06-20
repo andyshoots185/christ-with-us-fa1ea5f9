@@ -1,9 +1,9 @@
 // Centralised contact details for Arsenal Fund Uganda.
 // Phone number stored without leading 0 for international (wa.me) format.
 
-export const LOCAL_PHONE = "0703639277";
-export const INTL_PHONE = "+256703639277";
-export const WHATSAPP_NUMBER = "256703639277"; // wa.me format (no +)
+export const LOCAL_PHONE = "0731234815";
+export const INTL_PHONE = "+256731234815";
+export const WHATSAPP_NUMBER = "256731234815"; // wa.me format (no +)
 export const EMAIL = "hello@arsenalfunduganda.org";
 export const ADDRESS = "Kampala, Uganda";
 

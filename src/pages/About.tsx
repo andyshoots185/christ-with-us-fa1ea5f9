@@ -16,7 +16,7 @@ const About = () => (
     <PageHero
       tag="About"
       title="Driven By Purpose And Impact"
-      subtitle="A purpose-driven nonprofit organization working to create lasting change in communities across Uganda."
+      subtitle="A self-driven community initiative founded in 2025 — uniting Arsenal supporters and good-hearted Ugandans to lift the vulnerable and fund grassroots organisations doing real work on the ground."
       image={photos.together}
     />
 
@@ -25,14 +25,14 @@ const About = () => (
       <div className="container">
         <div className="grid md:grid-cols-2 gap-8 sm:gap-10 items-end mb-10 sm:mb-12">
           <Reveal as="p" className="text-muted-foreground max-w-md">
-            A purpose-driven nonprofit organization working to create lasting change in communities.
+            Founded in 2025 as a self-driven, fan-powered initiative — we directly support vulnerable communities and channel funding to small grassroots organisations across Uganda.
           </Reveal>
           <div className="grid grid-cols-2 gap-6 sm:gap-8">
             {[
-              { value: 11000, suffix: "+", label: "Lives Impacted" },
-              { value: 240, suffix: "+", label: "Active Volunteers" },
-              { value: 1200, suffix: "+", label: "Meals Delivered" },
-              { value: 62, suffix: "+", label: "Active Projects" },
+              { value: 420, suffix: "+", label: "Lives Impacted" },
+              { value: 18, suffix: "+", label: "Active Volunteers" },
+              { value: 6, suffix: "", label: "Partner Organisations Funded" },
+              { value: 9, suffix: "+", label: "Active Projects" },
             ].map((s, idx) => (
               <Reveal key={s.label} delay={idx * 80}>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -115,59 +115,57 @@ const About = () => (
       </div>
     </section>
 
-    {/* FOUNDER — single profile */}
+    {/* FOUNDER — single profile (no image) */}
     <section className="py-16 sm:py-24 bg-background">
-      <div className="container">
-        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
-          <div>
-            <span className="text-primary text-xs font-bold tracking-widest uppercase">● Meet the Founder</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight max-w-xl">
-              The Heart Behind the Mission
-            </h2>
-          </div>
-          <p className="text-muted-foreground max-w-sm">
-            One developer, one football club, one country — and an unshakable belief that technology and compassion can rewrite a child's future.
-          </p>
+      <div className="container max-w-4xl">
+        <Reveal className="text-center mb-10">
+          <span className="text-primary text-xs font-bold tracking-widest uppercase">● Meet the Founder</span>
+          <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight">
+            The Heart Behind the Mission
+          </h2>
         </Reveal>
 
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-6 sm:gap-10 items-center">
-          <Reveal className="rounded-3xl overflow-hidden aspect-[4/5] shadow-elevated">
-            <img
-              src={teamPhotos.dan}
-              alt="Dan — Founder of Arsenal Fund Uganda"
-              className="w-full h-full object-cover"
-            />
-          </Reveal>
+        <Reveal delay={120} className="space-y-5 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold ring-1 ring-primary/20">
+            <Code2 className="h-3.5 w-3.5" /> Founder · Gooner · Servant Leader
+          </div>
+          <h3 className="text-3xl md:text-4xl font-bold leading-tight">Andrew — Founder &amp; Lead Visionary</h3>
+          <p className="text-muted-foreground leading-relaxed text-left">
+            <strong>Arsenal Fund Uganda</strong> was founded in <strong>2025</strong> by Andrew — a lifelong Arsenal supporter and a son of Uganda — as a fully <strong>self-driven</strong> initiative. No big board, no corporate backers, no overhead empire. Just one conviction: that the love millions of us pour into a football club every weekend can be redirected, just a little, into the lives of children and families who need it most.
+          </p>
+          <p className="text-muted-foreground leading-relaxed text-left">
+            What makes Arsenal Fund Uganda different is the model. Alongside our own direct programs, <strong>we also fund smaller grassroots organisations</strong> already doing brilliant, quiet, faithful work in their communities — children's homes, village schools, feeding programs and youth ministries that simply need a partner who believes in them. We listen, we vet, and then we send the resources where they will multiply fastest.
+          </p>
+          <p className="text-muted-foreground leading-relaxed text-left">
+            "Arsenal taught me what 22 years of belief looks like. Uganda taught me what it's for." — <em>Andrew</em>
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2 justify-center">
+            <Button asChild className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground">
+              <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                Support the mission <ArrowRight className="ml-1 h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="rounded-full">
+              <a href={`tel:${INTL_PHONE}`}>
+                <Globe2 className="mr-2 h-4 w-4" /> Talk to Andrew
+              </a>
+            </Button>
+          </div>
+        </Reveal>
+      </div>
+    </section>
 
-          <Reveal delay={120} className="space-y-5">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold ring-1 ring-primary/20">
-              <Code2 className="h-3.5 w-3.5" /> Founder · Developer · Gooner
-            </div>
-            <h3 className="text-3xl md:text-4xl font-bold leading-tight">Dan — Founder &amp; Lead Visionary</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Dan is a software engineer at a leading web development agency, where he builds products used by thousands every day. But long before code, there was football — and long before football, there was Uganda. <strong>Arsenal Fund Uganda</strong> is the bridge between his two greatest loves: the precision of modern engineering and the unbreakable spirit of his community.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Born and raised in Kampala, Dan watched too many talented children fall through the cracks — not because they lacked dreams, but because they lacked a chance. As a lifelong Arsenal supporter, he saw what 22 years of unwavering belief can finally deliver. He's applying that same patient, principled belief here — using his platform, his skills and the global Arsenal family to lift Uganda's most vulnerable, one child, one meal, one scholarship at a time.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              "I build software for a living. But this — this is what I was actually built for."
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Button asChild className="rounded-full bg-primary hover:bg-primary-glow text-primary-foreground">
-                <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                  Support the mission <ArrowRight className="ml-1 h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild variant="outline" className="rounded-full">
-                <a href={`tel:${INTL_PHONE}`}>
-                  <Linkedin className="mr-2 h-4 w-4 hidden" />
-                  <Globe2 className="mr-2 h-4 w-4" /> Talk to Dan
-                </a>
-              </Button>
-            </div>
-          </Reveal>
-        </div>
+    {/* BIBLE VERSE — faith section */}
+    <section className="py-16 sm:py-24 carbon hero-bg">
+      <div className="container max-w-3xl text-center">
+        <span className="text-primary text-xs font-bold tracking-widest uppercase">● Rooted in Faith</span>
+        <blockquote className="mt-6 text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-snug">
+          "Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress…"
+        </blockquote>
+        <p className="mt-5 text-primary font-semibold tracking-wide">— James 1:27 (NIV)</p>
+        <p className="mt-6 text-carbon-muted max-w-xl mx-auto leading-relaxed">
+          We walk in this calling. Whether you give as a Christian, a Gooner, or simply someone with a generous heart — every act of love is honoured here.
+        </p>
       </div>
     </section>
 
@@ -206,9 +204,9 @@ const About = () => (
             </div>
             <div>
               <div className="text-3xl sm:text-4xl md:text-6xl font-black text-gradient-arsenal leading-none break-words">
-                <CountUp end={1660000} prefix="$" suffix="+" />
+                <CountUp end={24500} prefix="$" suffix="+" />
               </div>
-              <p className="text-carbon-muted mt-2 text-sm sm:text-base">Raised globally this year</p>
+              <p className="text-carbon-muted mt-2 text-sm sm:text-base">Raised so far — every shilling at work</p>
               <Button asChild className="mt-6 rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-6 sm:px-8 h-12 shadow-glow w-full sm:w-auto">
                 <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">Donate Now <ArrowRight className="ml-1 h-4 w-4" /></a>
               </Button>

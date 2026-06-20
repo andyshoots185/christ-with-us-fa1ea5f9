@@ -414,9 +414,9 @@ export const testimonials = [
 ];
 
 export const sponsorTiers = [
-  { tier: "Spark", monthly: 35, perks: ["1 child sponsored", "Quarterly photo update", "Personal letter"] },
-  { tier: "Hope", monthly: 75, perks: ["2 children sponsored", "Monthly impact report", "Personal letters", "Annual report"] },
-  { tier: "Legacy", monthly: 150, perks: ["A whole classroom", "Named recognition", "Field-visit invitation", "Direct line to coordinator"] },
+  { tier: "Spark", monthly: 120, perks: ["1 child fully sponsored", "Quarterly photo update", "Personal letter from your child"] },
+  { tier: "Hope", monthly: 280, perks: ["2 children sponsored", "Monthly impact report", "Personal letters", "Annual impact report"] },
+  { tier: "Legacy", monthly: 550, perks: ["A whole classroom (15+ children)", "Named recognition", "Field-visit invitation", "Direct line to your coordinator"] },
 ];
 
 export const accreditations = [

@@ -612,9 +612,9 @@ const Index = () => {
             </div>
             <div>
               <div className="text-3xl sm:text-4xl md:text-6xl font-black text-gradient-arsenal leading-none break-words">
-                <CountUp end={1660000} prefix="$" suffix="+" />
+                <CountUp end={24500} prefix="$" suffix="+" />
               </div>
-              <p className="text-carbon-muted mt-2 text-sm sm:text-base">Raised globally this year</p>
+              <p className="text-carbon-muted mt-2 text-sm sm:text-base">Raised so far — every shilling at work</p>
               <Button asChild className="mt-6 rounded-full bg-primary hover:bg-primary-glow text-primary-foreground px-6 sm:px-8 h-12 shadow-glow w-full sm:w-auto">
                 <a href={donateWhatsAppUrl} target="_blank" rel="noopener noreferrer">Donate Now <ArrowRight className="ml-1 h-4 w-4" /></a>
               </Button>
