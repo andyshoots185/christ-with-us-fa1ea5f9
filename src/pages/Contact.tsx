@@ -36,7 +36,7 @@ const Contact = () => {
     const data = Object.fromEntries(new FormData(form).entries());
     const result = schema.safeParse(data);
     if (!result.success) {
-      toast({ title: "Please check your details", description: result.error.errors[0].message, variant: "destructive" });
+      toast({ title: "Please check your details", description: result.error.issues[0].message, variant: "destructive" });
       return;
     }
     setSubmitting(true);

@@ -67,7 +67,7 @@ const Membership = () => {
     e.preventDefault();
     const r = schema.safeParse(form);
     if (!r.success) {
-      toast({ title: "Check your details", description: r.error.errors[0].message, variant: "destructive" });
+      toast({ title: "Check your details", description: r.error.issues[0].message, variant: "destructive" });
       return;
     }
     const list = JSON.parse(localStorage.getItem("afu_members") || "[]");
