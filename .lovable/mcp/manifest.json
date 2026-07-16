@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "sdk_version": "0.22.2",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "arsenal-fund-uganda-mcp",
+      "version": "0.1.0",
+      "title": "Arsenal Fund Uganda MCP"
+    },
+    "tools": [
+      {
+        "name": "list_causes",
+        "title": "List causes",
+        "description": "List the charitable causes Arsenal Fund Uganda currently supports, with fundraising progress and location.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "category": {
+              "description": "Optional case-insensitive category filter (e.g. Education, Food Security).",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_programs",
+        "title": "List programs",
+        "description": "List the active programs run by Arsenal Fund Uganda, including status and number of participants.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "status": {
+              "description": "Optional filter on status (e.g. Active, Expanding, New).",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_sponsor_tiers",
+        "title": "List sponsor tiers",
+        "description": "Return the sponsorship tiers (Spark, Hope, Legacy) with prices in USD and included perks.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_contact_info",
+        "title": "Get contact info",
+        "description": "Return public contact details for Arsenal Fund Uganda: phone, WhatsApp, email, address, and donation link.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

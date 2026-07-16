@@ -48,7 +48,7 @@ const Footer = () => {
     e.preventDefault();
     const result = emailSchema.safeParse(email);
     if (!result.success) {
-      toast({ title: "Invalid email", description: result.error.errors[0].message, variant: "destructive" });
+      toast({ title: "Invalid email", description: result.error.issues[0].message, variant: "destructive" });
       return;
     }
     const list = JSON.parse(localStorage.getItem("cwu_newsletter") || "[]");

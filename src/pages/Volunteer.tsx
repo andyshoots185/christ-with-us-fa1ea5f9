@@ -43,7 +43,7 @@ const Volunteer = () => {
     e.preventDefault();
     const r = schema.safeParse(form);
     if (!r.success) {
-      toast({ title: "Please check the form", description: r.error.errors[0].message, variant: "destructive" });
+      toast({ title: "Please check the form", description: r.error.issues[0].message, variant: "destructive" });
       return;
     }
     const list = JSON.parse(localStorage.getItem("afu_volunteers") || "[]");
