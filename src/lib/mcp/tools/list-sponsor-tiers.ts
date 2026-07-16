@@ -6,16 +6,14 @@ const TIERS = [
   { name: "Legacy", price_usd: 550, description: "Deep partnership funding a child plus community program contribution.", perks: ["Direct mentor pairing", "Site visit invitation", "Recognition plaque", "Full transparency dashboard"] },
 ];
 
-export default {
-  ...(await import("@lovable.dev/mcp-js")).defineTool({
-    name: "list_sponsor_tiers",
-    title: "List sponsor tiers",
-    description: "Return the sponsorship tiers (Spark, Hope, Legacy) with prices in USD and included perks.",
-    inputSchema: {},
-    annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
-    handler: () => ({
-      content: [{ type: "text", text: JSON.stringify(TIERS, null, 2) }],
-      structuredContent: { tiers: TIERS },
-    }),
+export default defineTool({
+  name: "list_sponsor_tiers",
+  title: "List sponsor tiers",
+  description: "Return the sponsorship tiers (Spark, Hope, Legacy) with prices in USD and included perks.",
+  inputSchema: {},
+  annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+  handler: () => ({
+    content: [{ type: "text", text: JSON.stringify(TIERS, null, 2) }],
+    structuredContent: { tiers: TIERS },
   }),
-};
+});
